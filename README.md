@@ -1,13 +1,13 @@
-# 📦 Streamlit App Starter Kit 
+# 🚕 Traffic Congestion Prediction using XGBoost, Random Forest, and LSTM 
 ```
 ⬆️ (Replace above with your app's name)
 ```
 
-Description of the app ...
+Predicting Traffic Congestion under Different Weather Conditions using Machine Learning Approaches by Baleña, Ruma, Ruma
 
 ## Demo App
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://app-starter-kit.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://BRR-Traffic.streamlit.app/)
 
 ## GitHub Codespaces
 
