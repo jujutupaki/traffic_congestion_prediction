@@ -1,7 +1,4 @@
-# 🚕 Traffic Congestion Prediction using XGBoost, Random Forest, and LSTM 
-```
-⬆️ (Replace above with your app's name)
-```
+# 🚗 Traffic Congestion Prediction using XGBoost, Random Forest, and LSTM 
 
 Predicting Traffic Congestion under Different Weather Conditions using Machine Learning Approaches by Baleña, Ruma, Ruma
 
