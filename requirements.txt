@@ -2,7 +2,6 @@ streamlit
 numpy
 pandas
 scikit-learn
-tensorFlow
 xgboost
 matplotlib
 seaborn
