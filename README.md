@@ -4,7 +4,7 @@ Predicting Traffic Congestion under Different Weather Conditions using Machine L
 
 ## Demo App
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://BRR-Traffic.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://brr-traffic.streamlit.app/)
 
 ## GitHub Codespaces
 
