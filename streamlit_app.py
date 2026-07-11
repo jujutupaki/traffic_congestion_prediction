@@ -11,7 +11,7 @@ dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interv
 train_val = dataset_df[(dataset_df['10_Minutes_Interval'] >= pd.Timestamp('2025-01-01 00:00:00')) & (dataset_df['10_Minutes_Interval'] <= '2025-11-23 11:50:00')].reset_index(drop=True)
 test = dataset_df[(dataset_df['10_Minutes_Interval'] >= pd.Timestamp('2025-11-24 00:00:00'))].reset_index(drop=True)
 # creating x (selected features only) and y variables
-selected_features =['Hour','temperature_2m (°C)',
+selected_features = ['Hour','temperature_2m (°C)',
                     'soil_temperature_0_to_7cm (°C)',
                     'Driving Direction',
                     'apparent_temperature (°C)',
@@ -27,7 +27,5 @@ y_test = test['Simulated Traffic Level']
 
 X.tail()
 y.tail()
-X.shape()
-y.shape()
 X_test.tail()
 y_test.tail()
