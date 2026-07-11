@@ -20,9 +20,9 @@ selected_features =['Hour','temperature_2m (°C)',
                     'vapour_pressure_deficit (kPa)',
                     'Minute',
                     'DayOfYear']
-X = train_val[
+X = train_val[selected_features]
 y = train_val['Simulated Traffic Level']
-X_test = test[]
+X_test = test[selected_features]
 y_test = test['Simulated Traffic Level']
 
 X.tail()
