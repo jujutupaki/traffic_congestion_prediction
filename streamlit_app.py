@@ -25,7 +25,5 @@ y = train_val['Simulated Traffic Level']
 X_test = test[selected_features]
 y_test = test['Simulated Traffic Level']
 
-X.tail()
-y.tail()
-X_test.tail()
-y_test.tail()
+X
+X_test
