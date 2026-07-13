@@ -8,9 +8,9 @@ st.info("""Welcome to **brr-traffic.streamlit.app**, the interactive dashboard f
 "Predicting Traffic Congestion under Different Weather Conditions Using Machine Learning Approaches".
 
 What you can explore here:\n
-• **Dataset Overview:** The final traffic-weather dataset using selected features\n
-• **Model Evaluation Dashboard:** Compare performance metrics across the Random Forest, XGBoost, and LSTM models\n
-• **Traffic Predictor:** Input custom weather conditions, dates, and times to generate real-time congestion predictions""")
+🔴 **Dataset Overview:** The final traffic-weather dataset using selected features\n
+🟡 **Model Evaluation Dashboard:** Compare performance metrics across the Random Forest, XGBoost, and LSTM models\n
+🟢 **Traffic Predictor:** Input custom weather conditions, dates, and times to generate real-time congestion predictions""")
 
 with st.expander('View Final Traffic-Weather Dataset'):
       dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Selected_Traffic_Data.csv')
