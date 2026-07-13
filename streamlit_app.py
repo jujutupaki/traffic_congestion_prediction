@@ -11,7 +11,7 @@ What you can explore here:\n
 🔴 **Dataset Overview:** The final traffic-weather dataset using selected features\n
 🟡 **Model Evaluation Dashboard:** Compare performance metrics across the Random Forest, XGBoost, and LSTM models\n
 🟢 **Traffic Predictor:** Input custom weather conditions, dates, and times to generate real-time congestion predictions\n
-      Click the button on the top-left corner to expand the sidebar and get started!""")
+Click the button on the top-left corner to expand the sidebar and get started!""")
 
 with st.expander('View Final Traffic-Weather Dataset'):
       dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Selected_Traffic_Data.csv')
