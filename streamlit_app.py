@@ -17,7 +17,7 @@ with st.expander('View Final Traffic-Weather Dataset'):
       dataset_df
 
 # User-defined features
-'''with st.sidebar:
+with st.sidebar:
       st.header("Input features below to generate a prediction:")
       date = st.datetime_input(
       "Choose date and time:",
@@ -30,7 +30,7 @@ with st.expander('View Final Traffic-Weather Dataset'):
       app_temp = st.slider("Choose apparent temperature (°C):", 0.0, 27.0, 18.8)
       soil_temp_7 = st.slider("Choose soil temperature (7-28 cm):", 0.0, 30.0, 18.9)
       s_pressure = st.slider("Choose surface pressure:", 800.0, 850.0, 855.3)
-      v_pressure = st.slider("Choose vapour pressure:", 0.0, 2.0, 1.88)'''
+      v_pressure = st.slider("Choose vapour pressure:", 0.0, 2.0, 1.88)
       
 #CV SPlit
 dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
