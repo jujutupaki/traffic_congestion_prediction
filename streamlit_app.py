@@ -19,7 +19,6 @@ with st.expander('View Final Traffic-Weather Dataset'):
 with st.sidebar:
       st.header("Input features below to generate a prediction:")
 
-
 #CV SPlit
-
+dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
 
