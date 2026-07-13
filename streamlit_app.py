@@ -20,7 +20,7 @@ with st.expander('View Final Traffic-Weather Dataset'):
 with st.sidebar:
       st.header("Input features below to generate a prediction:")
       date = st.datetime_input(
-      "Choose date and time:",
+      "**1. Choose date and time:**",
       datetime.datetime(2025, 11, 19, 16, 45),
       )
       #get hour, minute, and day of year
