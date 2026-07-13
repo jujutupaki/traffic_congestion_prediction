@@ -32,7 +32,18 @@ with st.sidebar:
       s_pressure = st.slider("7. Select surface pressure:", 800.0, 860.0, 846.5)
       v_pressure = st.slider("8. Select vapour pressure:", 0.0, 2.0, 1.88)
 
-      
+st.set_page_config(
+    page_title="Traffic Congestion Prediction",
+    page_icon="🚗",
+    initial_sidebar_state="collapsed",
+)
+
+st.markdown("""
+### Welcome!
+
+Use the **sidebar** (☰) to enter the traffic and weather information for prediction.
+""")
+
 #CV SPlit
 dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
 train_val = dataset_df[(dataset_df['10_Minutes_Interval'] >= pd.Timestamp('2025-01-01 00:00:00')) & (dataset_df['10_Minutes_Interval'] <= '2025-11-23 11:50:00')].reset_index(drop=True)
