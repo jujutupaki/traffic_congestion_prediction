@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import datetime
 
 st.title('🚗 Traffic Congestion Prediction')
 
@@ -18,7 +19,7 @@ with st.expander('View Final Traffic-Weather Dataset'):
 # User-defined features
 with st.sidebar:
       st.header("Input features below to generate a prediction:")
-      '''features: Hour
+      '''features:
       temperature_2m (°C)
       soil_temperature_0_to_7cm (°C)
       Driving Direction
@@ -29,8 +30,11 @@ with st.sidebar:
       Minute
       DayOfYear'''
 
-      hour = st.slider("Hour", 0, 23, 7)
-
+      date= st.datetime_input(
+      "Date and time:",
+      datetime.datetime(2025, 11, 19, 16, 45),
+      )
+      
 #CV SPlit
 dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
 train_val = dataset_df[(dataset_df['10_Minutes_Interval'] >= pd.Timestamp('2025-01-01 00:00:00')) & (dataset_df['10_Minutes_Interval'] <= '2025-11-23 11:50:00')].reset_index(drop=True)
