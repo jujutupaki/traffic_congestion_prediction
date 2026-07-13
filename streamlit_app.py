@@ -3,7 +3,7 @@ import pandas as pd
 
 st.title('🚗 Traffic Congestion Prediction')
 
-st.info('Welcome to \033[1mbrr-traffic.streamlit.app\033[0m, the interactive dashboard for our thesis: "Predicting Traffic Congestion under Different Weather Conditions Using Machine Learning Approaches".\n
+st.info('Welcome to brr-traffic.streamlit.app, the interactive dashboard for our thesis: "Predicting Traffic Congestion under Different Weather Conditions Using Machine Learning Approaches".\n
 What you can explore here:\n
 🚦 Dataset Overview: The final traffic-weather data using selected features\n
 📈 Model Evaluation Dashboard: Compare performance metrics across the Random Forest, XGBoost, and LSTM models\n
