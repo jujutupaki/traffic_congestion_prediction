@@ -25,10 +25,12 @@ train_val = dataset_df[(dataset_df['10_Minutes_Interval'] >= pd.Timestamp('2025-
 test = dataset_df[(dataset_df['10_Minutes_Interval'] >= pd.Timestamp('2025-11-24 00:00:00'))].reset_index(drop=True)
 X = train_val.drop(columns=['Simulated Traffic Level', '10_Minutes_Interval','Vehicle_Count'])
 y = train_val['Simulated Traffic Level']
-X
-y
-
 X_test = test.drop(columns=['Simulated Traffic Level', '10_Minutes_Interval','Vehicle_Count'])
 y_test = test['Simulated Traffic Level']
-X_test
-y_test
+
+st.expander():
+      X
+      y
+st. expander():
+      X_test
+      y_test
