@@ -3,7 +3,7 @@ import pandas as pd
 
 st.title('🚗 Traffic Congestion Prediction')
 
-st.info("""Welcome to brr-traffic.streamlit.app, the interactive dashboard for our thesis: \n
+st.info("""Welcome to **brr-traffic.streamlit.app**, the interactive dashboard for our thesis: \n
 "Predicting Traffic Congestion under Different Weather Conditions Using Machine Learning Approaches".
 
 What you can explore here:\n
