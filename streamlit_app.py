@@ -14,30 +14,8 @@ What you can explore here:\n
 Click the button on the top-left corner to expand the sidebar and generate a prediction!""")
 
 with st.expander('View Final Traffic-Weather Dataset'):
-      dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Selected_Traffic_Data.csv')
+      dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Traffic_Data_Selected_Features.csv')
       dataset_df
-
-# User-defined features
-with st.sidebar:
-      st.header("Input features:")
-      date = st.datetime_input(
-      "1. Select date and time:",
-      datetime.datetime(2025, 11, 19, 16, 45),
-      )
-      #get hour, minute, and day of year
-      temp = st.slider("2. Select temperature (°C):", 0.0, 30.0, 17.5)
-      soil_temp_0 = st.slider("3. Select soil temperature (0-7 cm):", 0.0, 30.0, 18.6)
-      driving_direction = st.slider("4. Select driving direction: 0 (Backward), 1 (Forward)", 0, 1, 0)
-      app_temp = st.slider("5. Select apparent temperature (°C):", 0.0, 27.0, 18.8)
-      soil_temp_7 = st.slider("6. Select soil temperature (7-28 cm):", 0.0, 30.0, 18.9)
-      s_pressure = st.slider("7. Select surface pressure:", 800.0, 860.0, 846.5)
-      v_pressure = st.slider("8. Select vapour pressure:", 0.0, 2.0, 1.88)
-
-st.set_page_config(
-    page_title="Traffic Congestion Prediction",
-    page_icon="🚗",
-    initial_sidebar_state="collapsed",
-)
 
 #CV SPlit
 dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
@@ -48,3 +26,34 @@ y = train_val['Simulated Traffic Level']
 X_test = test.drop(columns=['Simulated Traffic Level', '10_Minutes_Interval'])
 y_test = test['Simulated Traffic Level']
 
+# User-defined features
+with st.sidebar:
+      st.header("Input features:")
+      date = st.datetime_input(
+      "1. Select date and time:",
+      datetime.datetime(2025, 11, 19, 16, 45),
+      )
+      date
+      hour = 
+      
+      
+      temp = st.slider("2. Select temperature (°C):", 0.0, 30.0, 17.5)
+      soil_temp_0 = st.slider("3. Select soil temperature (0-7 cm):", 0.0, 30.0, 18.6)
+      driving_direction = st.slider("4. Select driving direction: 0 (Backward), 1 (Forward)", 0, 1, 0)
+      app_temp = st.slider("5. Select apparent temperature (°C):", 0.0, 27.0, 18.8)
+      soil_temp_7 = st.slider("6. Select soil temperature (7-28 cm):", 0.0, 30.0, 18.9)
+      s_pressure = st.slider("7. Select surface pressure:", 800.0, 860.0, 846.5)
+      v_pressure = st.slider("8. Select vapour pressure:", 0.0, 2.0, 1.88)
+
+      #df for input features
+      df_label = {
+            'Hour': 
+      }
+
+"Hour","soil_temperature_0_to_7cm (°C)","temperature_2m (°C)","Driving Direction","apparent_temperature (°C)","soil_temperature_7_to_28cm (°C)","surface_pressure (hPa)","vapour_pressure_deficit (kPa)","DayOfYear","Minute"]
+
+st.set_page_config(
+    page_title="Traffic Congestion Prediction",
+    page_icon="🚗",
+    initial_sidebar_state="collapsed",
+)
