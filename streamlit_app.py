@@ -18,6 +18,18 @@ with st.expander('View Final Traffic-Weather Dataset'):
 # User-defined features
 with st.sidebar:
       st.header("Input features below to generate a prediction:")
+      '''features: Hour
+      temperature_2m (°C)
+      soil_temperature_0_to_7cm (°C)
+      Driving Direction
+      apparent_temperature (°C)
+      soil_temperature_7_to_28cm (°C)
+      surface_pressure (hPa)
+      vapour_pressure_deficit (kPa)
+      Minute
+      DayOfYear'''
+
+      hour = st.slider("Hour", 0, 7, 23)
 
 #CV SPlit
 dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
@@ -27,10 +39,3 @@ X = train_val.drop(columns=['Simulated Traffic Level', '10_Minutes_Interval'])
 y = train_val['Simulated Traffic Level']
 X_test = test.drop(columns=['Simulated Traffic Level', '10_Minutes_Interval'])
 y_test = test['Simulated Traffic Level']
-
-with st.expander('Hello'):
-      X
-      y
-with st. expander('World'):
-      X_test
-      y_test
