@@ -46,11 +46,11 @@ with st.sidebar:
       v_pressure = st.slider("8. Select vapour pressure:", 0.0, 2.0, 1.88)
 
       #df for input features
-      df_label = {
-            'Hour': 
-      }
+      #df_label = {
+            #'Hour': 
+      #}
 
-"Hour","soil_temperature_0_to_7cm (°C)","temperature_2m (°C)","Driving Direction","apparent_temperature (°C)","soil_temperature_7_to_28cm (°C)","surface_pressure (hPa)","vapour_pressure_deficit (kPa)","DayOfYear","Minute"]
+#"Hour","soil_temperature_0_to_7cm (°C)","temperature_2m (°C)","Driving Direction","apparent_temperature (°C)","soil_temperature_7_to_28cm (°C)","surface_pressure (hPa)","vapour_pressure_deficit (kPa)","DayOfYear","Minute"]
 
 st.set_page_config(
     page_title="Traffic Congestion Prediction",
