@@ -29,7 +29,7 @@ with st.sidebar:
       Minute
       DayOfYear'''
 
-      hour = st.slider("Hour", 0, 7, 23)
+      hour = st.slider("Hour", 0, 23, 7)
 
 #CV SPlit
 dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
