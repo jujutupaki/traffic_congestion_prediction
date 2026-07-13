@@ -33,8 +33,8 @@ with st.sidebar:
       "1. Select date and time:",
       datetime.datetime(2025, 11, 19, 16, 45),
       )
-      date
-      hour = 
+      #date
+      #hour = 
       
       
       temp = st.slider("2. Select temperature (°C):", 0.0, 30.0, 17.5)
