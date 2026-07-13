@@ -8,7 +8,7 @@ st.info("""Welcome to **brr-traffic.streamlit.app**, the interactive dashboard f
 "Predicting Traffic Congestion under Different Weather Conditions Using Machine Learning Approaches".
 
 What you can explore here:\n
-• **Dataset Overview:** The final traffic-weather data using selected features\n
+• **Dataset Overview:** The final traffic-weather dataset using selected features\n
 • **Model Evaluation Dashboard:** Compare performance metrics across the Random Forest, XGBoost, and LSTM models\n
 • **Traffic Predictor:** Input custom weather conditions, dates, and times to generate real-time congestion predictions""")
 
@@ -30,10 +30,20 @@ with st.sidebar:
       Minute
       DayOfYear'''
 
-      date= st.datetime_input(
-      "Date and time:",
+      date = st.datetime_input(
+      "Choose date and time:",
       datetime.datetime(2025, 11, 19, 16, 45),
       )
+      #get hour, minute, day of year
+
+      temp = st.slider("Choose temperature (°C):",0, 27, 17.5)
+      soil_temp_0 = st.slider(""Choose soil temperature (0-7 cm):", )
+      driving_direction = st.slider("Choose driving direction: 0 (Backward), 1 (Forward)", 0, 1, 0)
+      app_temp = st.slider("Choose apparent temperature:",)
+      soil_temp_7 = st.slider("Choose soil temperature (7-28 cm):")
+      s_pressure = st.slider("Choose surface pressure:")
+      v_pressure = st.slider("Choose vapour pressure:")
+      
       
 #CV SPlit
 dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
@@ -43,3 +53,4 @@ X = train_val.drop(columns=['Simulated Traffic Level', '10_Minutes_Interval'])
 y = train_val['Simulated Traffic Level']
 X_test = test.drop(columns=['Simulated Traffic Level', '10_Minutes_Interval'])
 y_test = test['Simulated Traffic Level']
+
