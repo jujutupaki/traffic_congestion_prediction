@@ -28,9 +28,9 @@ y = train_val['Simulated Traffic Level']
 X_test = test.drop(columns=['Simulated Traffic Level', '10_Minutes_Interval'])
 y_test = test['Simulated Traffic Level']
 
-with st.expander():
+with st.expander('Hello'):
       X
       y
-with st. expander():
+with st. expander('World'):
       X_test
       y_test
