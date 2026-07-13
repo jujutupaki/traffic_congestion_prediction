@@ -36,7 +36,7 @@ with st.sidebar:
       )
       #get hour, minute, day of year
 
-      temp = st.slider("Choose temperature (°C):",0, 27, 17.5)
+      temp = st.slider("Choose temperature (°C):",0.0, 27.0, 17.5)
       #soil_temp_0 = st.slider("Choose soil temperature (0-7 cm):", )
       #driving_direction = st.slider("Choose driving direction: 0 (Backward), 1 (Forward)", 0, 1, 0)
       #app_temp = st.slider("Choose apparent temperature:",)
