@@ -20,17 +20,17 @@ with st.expander('View Final Traffic-Weather Dataset'):
 with st.sidebar:
       st.header("Input features below to generate a prediction:")
       date = st.datetime_input(
-      "**1. Choose date and time:**",
+      "1. Choose date and time:",
       datetime.datetime(2025, 11, 19, 16, 45),
       )
       #get hour, minute, and day of year
-      temp = st.slider("Choose temperature (°C):", 0.0, 30.0, 17.5)
-      soil_temp_0 = st.slider("Choose soil temperature (0-7 cm):", 0.0, 30.0, 18.6)
-      driving_direction = st.slider("Choose driving direction: 0 (Backward), 1 (Forward)", 0, 1, 0)
-      app_temp = st.slider("Choose apparent temperature (°C):", 0.0, 27.0, 18.8)
-      soil_temp_7 = st.slider("Choose soil temperature (7-28 cm):", 0.0, 30.0, 18.9)
-      s_pressure = st.slider("Choose surface pressure:", 800.0, 860.0, 846.5)
-      v_pressure = st.slider("Choose vapour pressure:", 0.0, 2.0, 1.88)
+      temp = st.slider("2. Choose temperature (°C):", 0.0, 30.0, 17.5)
+      soil_temp_0 = st.slider("3. Choose soil temperature (0-7 cm):", 0.0, 30.0, 18.6)
+      driving_direction = st.slider("4. Choose driving direction: 0 (Backward), 1 (Forward)", 0, 1, 0)
+      app_temp = st.slider("5. Choose apparent temperature (°C):", 0.0, 27.0, 18.8)
+      soil_temp_7 = st.slider("6. Choose soil temperature (7-28 cm):", 0.0, 30.0, 18.9)
+      s_pressure = st.slider("7. Choose surface pressure:", 800.0, 860.0, 846.5)
+      v_pressure = st.slider("8. Choose vapour pressure:", 0.0, 2.0, 1.88)
       
 #CV SPlit
 dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
