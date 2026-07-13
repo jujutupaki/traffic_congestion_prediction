@@ -19,23 +19,11 @@ with st.expander('View Final Traffic-Weather Dataset'):
 # User-defined features
 with st.sidebar:
       st.header("Input features below to generate a prediction:")
-      '''features:
-      temperature_2m (°C)
-      soil_temperature_0_to_7cm (°C)
-      Driving Direction
-      apparent_temperature (°C)
-      soil_temperature_7_to_28cm (°C)
-      surface_pressure (hPa)
-      vapour_pressure_deficit (kPa)
-      Minute
-      DayOfYear'''
-
       date = st.datetime_input(
       "Choose date and time:",
       datetime.datetime(2025, 11, 19, 16, 45),
       )
-      #get hour, minute, day of year
-
+      #get hour, minute, and day of year
       temp = st.slider("Choose temperature (°C):", 0.0, 30.0, 17.5)
       soil_temp_0 = st.slider("Choose soil temperature (0-7 cm):", 0.0, 30.0, 18.6)
       driving_direction = st.slider("Choose driving direction: 0 (Backward), 1 (Forward)", 0, 1, 0)
@@ -52,4 +40,3 @@ X = train_val.drop(columns=['Simulated Traffic Level', '10_Minutes_Interval'])
 y = train_val['Simulated Traffic Level']
 X_test = test.drop(columns=['Simulated Traffic Level', '10_Minutes_Interval'])
 y_test = test['Simulated Traffic Level']
-
