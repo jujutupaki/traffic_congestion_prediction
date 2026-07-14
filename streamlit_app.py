@@ -34,7 +34,7 @@ with st.sidebar:
       datetime.datetime(2025, 11, 19, 16, 45),
       )
       date = pd.to_datetime(date)
-      min - date.dt.minute
+      min = date.dt.minute
       hour = date.dt.hour
       dayofyear = date.dt.dayofyear
       
