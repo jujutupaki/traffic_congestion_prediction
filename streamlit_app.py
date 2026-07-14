@@ -19,10 +19,6 @@ What you can explore here:\n
 🟢 **Traffic Predictor:** Input custom weather conditions, dates, and times to generate real-time congestion predictions\n
 Click the button on the top-left corner to expand the sidebar and generate a prediction!""")
 
-with st.expander('View Final Traffic-Weather Dataset'):
-      dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Traffic_Data_Selected_Features.csv')
-      dataset_df
-
 #CV SPlit
 dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
 train_val = dataset_df[(dataset_df['10_Minutes_Interval'] >= pd.Timestamp('2025-01-01 00:00:00')) & (dataset_df['10_Minutes_Interval'] <= '2025-11-23 11:50:00')].reset_index(drop=True)
@@ -52,20 +48,24 @@ with st.sidebar:
       s_pressure = st.slider("7. Select surface pressure:", 800.0, 860.0, 846.5)
       v_pressure = st.slider("8. Select vapour pressure:", 0.0, 2.0, 1.88)
 
-      #df for input features
-      df_label = {
-            'Hour': hour,
-            'Minute': min,
-            'DayofYear': dayofyear,
-            'temperature_2m (°C)': temp,
-            'soil_temperature_0_to_7cm (°C)': soil_temp_0,
-            'Driving Direction': driving_direction,
-            'apparent_temperature (°C)': app_temp,
-            'soil_temperature_7_to_28cm (°C)': soil_temp_7,
-            'surface_pressure (hPa)': s_pressure,
-            'vapour_pressure_deficit (kPa)': v_pressure         
-      }
+#df for input features
+df_label = {
+    'Hour': hour,
+    'Minute': min,
+    'DayofYear': dayofyear,
+    'temperature_2m (°C)': temp,
+    'soil_temperature_0_to_7cm (°C)': soil_temp_0,
+    'Driving Direction': driving_direction,
+    'apparent_temperature (°C)': app_temp,
+    'soil_temperature_7_to_28cm (°C)': soil_temp_7,
+    'surface_pressure (hPa)': s_pressure,
+    'vapour_pressure_deficit (kPa)': v_pressure
+}
 
-      input_df = pd.DataFrame(df_label, index=[0])
-      st.info("Chosen input features:")
+input_df = pd.DataFrame(df_label, index=[0])
+      st.info("Chosen input:")
       input_df
+
+with st.expander('View Final Traffic-Weather Dataset'):
+      dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Traffic_Data_Selected_Features.csv')
+      dataset_df
