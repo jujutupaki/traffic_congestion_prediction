@@ -33,9 +33,10 @@ with st.sidebar:
       "1. Select date and time:",
       datetime.datetime(2025, 11, 19, 16, 45),
       )
-      #date
-      #hour = 
-      
+      date = pd.to_datetime(date)
+      min - date.dt.minute
+      hour = date.dt.hour
+      dayofyear = date.dt.dayofyear
       
       temp = st.slider("2. Select temperature (°C):", 0.0, 30.0, 17.5)
       soil_temp_0 = st.slider("3. Select soil temperature (0-7 cm):", 0.0, 30.0, 18.6)
@@ -46,12 +47,23 @@ with st.sidebar:
       v_pressure = st.slider("8. Select vapour pressure:", 0.0, 2.0, 1.88)
 
       #df for input features
-      #df_label = {
-            #'Hour': 
-      #}
+      df_label = {
+            'Hour': hour,
+            'Minute': min,
+            'DayofYear': dayofyear,
+            'temperature_2m (°C)': temp,
+            'soil_temperature_0_to_7cm (°C)': soil_temp_0,
+            'Driving Direction': driving_direction,
+            'apparent_temperature (°C)': app_temp,
+            'soil_temperature_7_to_28cm (°C)': soil_temp_7,
+            'surface_pressure (hPa)': s_pressure,
+            'vapour_pressure_deficit (kPa)': v_pressure         
+      }
 
-#"Hour","soil_temperature_0_to_7cm (°C)","temperature_2m (°C)","Driving Direction","apparent_temperature (°C)","soil_temperature_7_to_28cm (°C)","surface_pressure (hPa)","vapour_pressure_deficit (kPa)","DayOfYear","Minute"]
-
+      input_df = pd.DataFrame(df_label, index=[0])
+      st.info("Chosen input features:")
+      input_df
+      
 st.set_page_config(
     page_title="Traffic Congestion Prediction",
     page_icon="🚗",
