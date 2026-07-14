@@ -63,8 +63,8 @@ df_label = {
 }
 
 input_df = pd.DataFrame(df_label, index=[0])
-      st.info("Chosen input:")
-      input_df
+st.info("Chosen input:")
+input_df
 
 with st.expander('View Final Traffic-Weather Dataset'):
       dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Traffic_Data_Selected_Features.csv')
