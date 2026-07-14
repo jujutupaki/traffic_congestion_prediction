@@ -2,6 +2,12 @@ import streamlit as st
 import pandas as pd
 import datetime
 
+st.set_page_config(
+    page_title="Traffic Congestion Prediction",
+    page_icon="🚗",
+    initial_sidebar_state="collapsed",
+)
+
 st.title('🚗 Traffic Congestion Prediction')
 
 st.info("""Welcome to **brr-traffic.streamlit.app**, the interactive dashboard for our thesis: \n
@@ -63,9 +69,3 @@ with st.sidebar:
       input_df = pd.DataFrame(df_label, index=[0])
       st.info("Chosen input features:")
       input_df
-      
-st.set_page_config(
-    page_title="Traffic Congestion Prediction",
-    page_icon="🚗",
-    initial_sidebar_state="collapsed",
-)
