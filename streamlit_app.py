@@ -18,6 +18,10 @@ What you can explore here:\n
 🟡 **Model Evaluation Dashboard:** Compare performance metrics across the Random Forest, XGBoost, and LSTM models\n
 🟢 **Traffic Predictor:** Input custom weather conditions, dates, and times to generate real-time congestion predictions\n""")
 
+#dataset
+with st.expander('View Final Traffic-Weather Dataset'):
+      dataset_df
+
 #CV SPlit
 dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Traffic_Data_Selected_Features.csv')
 dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
@@ -66,6 +70,3 @@ input_df = pd.DataFrame(df_label, index=[0])
 st.info("""Click the button on the top-left corner to expand the sidebar and generate a prediction!\n
 Current input for features:""")
 input_df
-
-with st.expander('View Final Traffic-Weather Dataset'):
-      dataset_df
