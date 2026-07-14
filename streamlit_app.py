@@ -34,9 +34,9 @@ with st.sidebar:
       datetime.datetime(2025, 11, 19, 16, 45),
       )
       date = pd.to_datetime(date)
-      min = date.dt.minute
-      hour = date.dt.hour
-      dayofyear = date.dt.dayofyear
+      min = date.minute
+      hour = date.hour
+      dayofyear = date.dayofyear
       
       temp = st.slider("2. Select temperature (°C):", 0.0, 30.0, 17.5)
       soil_temp_0 = st.slider("3. Select soil temperature (0-7 cm):", 0.0, 30.0, 18.6)
