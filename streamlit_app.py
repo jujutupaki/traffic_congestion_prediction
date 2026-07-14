@@ -63,7 +63,7 @@ df_label = {
 }
 
 input_df = pd.DataFrame(df_label, index=[0])
-st.info("""Click the button on the top-left corner to expand the sidebar and generate a prediction!
+st.info("""Click the button on the top-left corner to expand the sidebar and generate a prediction!\n
 Current input for features:""")
 input_df
 
