@@ -16,8 +16,7 @@ st.info("""Welcome to **brr-traffic.streamlit.app**, the interactive dashboard f
 What you can explore here:\n
 🔴 **Dataset Overview:** The final traffic-weather dataset using selected features\n
 🟡 **Model Evaluation Dashboard:** Compare performance metrics across the Random Forest, XGBoost, and LSTM models\n
-🟢 **Traffic Predictor:** Input custom weather conditions, dates, and times to generate real-time congestion predictions\n
-Click the button on the top-left corner to expand the sidebar and generate a prediction!""")
+🟢 **Traffic Predictor:** Input custom weather conditions, dates, and times to generate real-time congestion predictions\n""")
 
 #CV SPlit
 dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Traffic_Data_Selected_Features.csv')
@@ -64,7 +63,7 @@ df_label = {
 }
 
 input_df = pd.DataFrame(df_label, index=[0])
-st.info("Chosen input:")
+st.info("Click the button on the top-left corner to expand the sidebar and generate a prediction!\nCurrent input for features:")
 input_df
 
 with st.expander('View Final Traffic-Weather Dataset'):
