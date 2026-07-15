@@ -22,7 +22,7 @@ What you can explore here:\n
 
 #dataset
 with st.expander('View Final Traffic-Weather Dataset'):
-      dataset_df
+      dataset_df.head()
 
 #CV SPlit
 dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
