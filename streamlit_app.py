@@ -74,10 +74,11 @@ Current input for features:""")
 input_df
 
 st.info("Select a Machine Learning Model")
-model_choice = st.radio("",(
-        "XGBoost",
-        "Random Forest",
-        "LSTM"))
+model_choice = st.radio(
+    "Select a Machine Learning Model",
+    ("XGBoost", "Random Forest", "LSTM"),
+    label_visibility="collapsed"
+)
 
 #prediction for XGBoost Model
 @st.cache_resource
