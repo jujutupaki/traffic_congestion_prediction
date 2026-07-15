@@ -58,9 +58,9 @@ with st.sidebar:
 df_label = {
     'Hour': hour,
     'Minute': min,
-    'DayofYear': dayofyear,
-    'temperature_2m (°C)': temp,
+    'DayOfYear': dayofyear,
     'soil_temperature_0_to_7cm (°C)': soil_temp_0,
+    'temperature_2m (°C)': temp,
     'Driving Direction': driving_direction,
     'apparent_temperature (°C)': app_temp,
     'soil_temperature_7_to_28cm (°C)': soil_temp_7,
