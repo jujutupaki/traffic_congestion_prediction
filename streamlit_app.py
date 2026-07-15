@@ -73,14 +73,13 @@ st.info("""Click the button on the top-left corner to expand the sidebar and gen
 Current input for features:""")
 input_df
 
-model_choice = st.radio(
-    "Select a Machine Learning Model",
+st.info("Select a Machine Learning Model")
+model_choice = st.radio
     (
         "XGBoost",
         "Random Forest",
         "LSTM"
     )
-)
 
 #prediction for XGBoost Model
 @st.cache_resource
