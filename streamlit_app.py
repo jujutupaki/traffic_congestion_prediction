@@ -48,7 +48,7 @@ with st.sidebar:
       
       temp = st.slider("2. Select temperature (°C):", 0.0, 30.0, 17.5)
       soil_temp_0 = st.slider("3. Select soil temperature (0-7 cm):", 0.0, 30.0, 18.6)
-      driving_direction = st.selectbox("Driving Direction (Backward: 0, Forward: 1"), [0, 1])
+      driving_direction = st.selectbox("Driving Direction (Backward: 0, Forward: 1)", [0, 1])
       app_temp = st.slider("5. Select apparent temperature (°C):", 0.0, 27.0, 18.8)
       soil_temp_7 = st.slider("6. Select soil temperature (7-28 cm):", 0.0, 30.0, 18.9)
       s_pressure = st.slider("7. Select surface pressure:", 800.0, 860.0, 846.5)
