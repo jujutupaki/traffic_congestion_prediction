@@ -74,7 +74,7 @@ Current input for features:""")
 input_df
 
 st.info("Select a Machine Learning Model")
-model_choice = st.radio((
+model_choice = st.radio("",(
         "XGBoost",
         "Random Forest",
         "LSTM"))
