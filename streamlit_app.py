@@ -80,6 +80,9 @@ model_choice = st.radio(
     label_visibility="collapsed"
 )
 
+#dictionary to map predictions
+#pred_dict = {"
+
 #prediction for XGBoost Model
 @st.cache_resource
 def load_xgb_model():
