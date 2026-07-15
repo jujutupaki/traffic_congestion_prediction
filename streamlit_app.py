@@ -73,6 +73,7 @@ st.info("""Click the button on the top-left corner to expand the sidebar and gen
 Current input for features:""")
 input_df
 
+#prediction for XGBoost Model
 @st.cache_resource
 def load_xgb_model():
     return joblib.load("models/XGBoost.pkl")
