@@ -75,7 +75,7 @@ input_df
 
 @st.cache_resource
 def load_xgb_model():
-    return joblib.load(models/"XGBoost.pkl")
+    return joblib.load("models/XGBoost.pkl")
 
 xgb_model = load_xgb_model()
 
