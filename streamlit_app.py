@@ -57,8 +57,6 @@ with st.sidebar:
 #df for input features
 df_label = {
     'Hour': hour,
-    'Minute': min,
-    'DayOfYear': dayofyear,
     'soil_temperature_0_to_7cm (°C)': soil_temp_0,
     'temperature_2m (°C)': temp,
     'Driving Direction': driving_direction,
@@ -66,6 +64,8 @@ df_label = {
     'soil_temperature_7_to_28cm (°C)': soil_temp_7,
     'surface_pressure (hPa)': s_pressure,
     'vapour_pressure_deficit (kPa)': v_pressure
+    'DayOfYear': dayofyear,
+    'Minute': min,
 }
 
 input_df = pd.DataFrame(df_label, index=[0])
