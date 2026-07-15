@@ -68,6 +68,11 @@ df_label = {
     'Minute': min
 }
 
+input_df = pd.DataFrame(df_label, index=[0])
+st.info("""Click the button on the top-left corner to expand the sidebar and generate a prediction!\n
+Current input for features:""")
+input_df
+
 model_choice = st.radio(
     "Select a Machine Learning Model",
     (
@@ -76,11 +81,6 @@ model_choice = st.radio(
         "LSTM"
     )
 )
-
-input_df = pd.DataFrame(df_label, index=[0])
-st.info("""Click the button on the top-left corner to expand the sidebar and generate a prediction!\n
-Current input for features:""")
-input_df
 
 #prediction for XGBoost Model
 @st.cache_resource
