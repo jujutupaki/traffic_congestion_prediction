@@ -63,9 +63,9 @@ df_label = {
     'apparent_temperature (°C)': app_temp,
     'soil_temperature_7_to_28cm (°C)': soil_temp_7,
     'surface_pressure (hPa)': s_pressure,
-    'vapour_pressure_deficit (kPa)': v_pressure
+    'vapour_pressure_deficit (kPa)': v_pressure,
     'DayOfYear': dayofyear,
-    'Minute': min,
+    'Minute': min
 }
 
 input_df = pd.DataFrame(df_label, index=[0])
