@@ -1,8 +1,11 @@
+%%writefile app.py
 import streamlit as st
 import pandas as pd
-import datetime
+from datetime import timedelta, datetime
 import joblib
+import plotly.express as px
 
+#add dark theme? spotify???
 dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Traffic_Data_Selected_Features.csv')
 
 st.set_page_config(
@@ -14,7 +17,7 @@ st.set_page_config(
 st.title('🚗 Traffic Congestion Prediction')
 
 st.info("""Welcome to **brr-traffic.streamlit.app**, the interactive dashboard for our thesis: \n
-"Predicting Traffic Congestion under Different Weather Conditions Using Machine Learning Approaches".
+"Predicting Traffic Congestion under Different Weather Conditions Using Machine Learning Approaches"
 
 What you can explore here:\n
 🔴 **Dataset Overview:** The final traffic-weather dataset using selected features\n
@@ -36,23 +39,22 @@ y_test = test['Simulated Traffic Level']
 
 # User-defined features
 with st.sidebar:
-      st.header("Input features:")
+      st.header("PLEASE INPUT FEATURES")
       date = st.datetime_input(
-      "1. Select date and time:",
-      datetime.datetime(2025, 11, 19, 16, 45),
-      )
+      "Select date and time:",
+      datetime(2025, 11, 19, 16, 40),
+      step=timedelta(minutes=10))
+      temp = st.number_input("Select temperature (°C)", value=0.0)
+      soil_temp_0 = st.number_input("Select soil temperature (0-7 cm)", value=0.0)
+      driving_direction = st.selectbox("Select driving direction (Backward: 0, Forward: 1)", [0, 1])
+      app_temp = st.number_input("Select apparent temperature (°C)", value=0.0)
+      soil_temp_7 = st.number_input("Select soil temperature (7-28 cm)", value=0.0)
+      s_pressure = st.number_input("Select surface pressure (hPa)", value=0.0)
+      v_pressure = st.number_input("Select vapour pressure (kPa)", value=0.0)
       date = pd.to_datetime(date)
       min = date.minute
       hour = date.hour
       dayofyear = date.dayofyear
-      
-      temp = st.slider("2. Select temperature (°C):", 0.0, 30.0, 17.5)
-      soil_temp_0 = st.slider("3. Select soil temperature (0-7 cm):", 0.0, 30.0, 18.6)
-      driving_direction = st.selectbox("4. Driving Direction (Backward: 0, Forward: 1)", [0, 1])
-      app_temp = st.slider("5. Select apparent temperature (°C):", 0.0, 27.0, 18.8)
-      soil_temp_7 = st.slider("6. Select soil temperature (7-28 cm):", 0.0, 30.0, 18.9)
-      s_pressure = st.slider("7. Select surface pressure:", 800.0, 860.0, 846.5)
-      v_pressure = st.slider("8. Select vapour pressure:", 0.0, 2.0, 1.88)
 
 #df for input features
 df_label = {
@@ -73,22 +75,120 @@ st.info("""Click the button on the top-left corner to expand the sidebar and gen
 Current input for features:""")
 input_df
 
-st.info("Select a Machine Learning Model")
+st.info("Choose a model to start prediction:")
 model_choice = st.radio(
-    "Select a Machine Learning Model",
-    ("XGBoost", "Random Forest", "LSTM"),
+    "Choose a model to start prediction:",
+    ("Random Forest", "XGBoost", "LSTM"),
     label_visibility="collapsed"
 )
 
-#dictionary to map predictions
-#pred_dict = {"
+def display_prediction(prediction):
+    # map predictions
+    pred_dict = {
+        0: "Low Traffic",
+        1: "Moderate Traffic",
+        2: "Heavy Traffic"
+    }
 
-#prediction for XGBoost Model
-@st.cache_resource
-def load_xgb_model():
-    return joblib.load("models/XGBoost.pkl")
+    # get predicted class
+    prediction = int(prediction[0])
 
-xgb_model = load_xgb_model()
+    # color settings
+    if prediction == 0:
+        bg_color = "#d4edda"      # Light green
+        text_color = "#155724"    # Dark green
+    elif prediction == 1:
+        bg_color = "#fff3cd"      # Light yellow
+        text_color = "#856404"    # Dark yellow
+    else:
+        bg_color = "#f8d7da"      # Light red
+        text_color = "#721c24"    # Dark red
 
-xgb_prediction = xgb_model.predict(input_df)
-st.write(xgb_prediction)
+    st.markdown(
+        f"""
+        <div style="
+            background-color:{bg_color};
+            padding:25px;
+            border-radius:12px;
+            text-align:center;
+            border:2px solid {text_color};
+             margin-bottom:30px;
+        ">
+            <h3 style="margin:0; color:{text_color};">
+                🚦{model_choice} Predicts
+            </h3>
+            <h1 style="margin-top:10px; color:{text_color};">
+                {pred_dict[prediction]}
+            </h1>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+#predict using chosen model
+model = joblib.load(f"{model_choice}.pkl")
+prediction = model.predict(input_df)
+
+#call display_pred
+
+display_prediction(prediction)
+
+st.info("Select metrics to display:")
+
+accuracy = st.checkbox("Accuracy")
+precision = st.checkbox("Precision")
+recall = st.checkbox("Recall")
+f1_score = st.checkbox("F1 Score")
+
+st.info("Select model/s to show its performance:")
+
+rf = st.checkbox("Random Forest")
+xgb = st.checkbox("XGBoost")
+lstm = st.checkbox("LSTM")
+
+# Collect active selections
+selected_models = []
+selected_metrics = []
+if rf: selected_models.append("Random Forest")
+if xgb: selected_models.append("XGBoost")
+if lstm: selected_models.append("LSTM")
+if accuracy: selected_metrics.append("Accuracy")
+if precision: selected_metrics.append("Precision")
+if recall: selected_metrics.append("Recall")
+if f1_score: selected_metrics.append("F1 Score")
+
+metrics_df = joblib.load("metrics_df.pkl")
+
+if selected_models and selected_metrics:
+
+    # Filter dataframe
+    filtered_df = metrics_df.loc[selected_models, selected_metrics]
+
+    # Convert to long format for Plotly
+    plot_df = filtered_df.reset_index().melt(
+        id_vars="index",
+        var_name="Metric",
+        value_name="Score"
+    ).rename(columns={"index": "Model"})
+
+    # Create grouped bar chart
+    fig = px.bar(
+        plot_df,
+        x="Metric",
+        y="Score",
+        color="Model",
+        barmode="group",
+        text_auto=".3f",
+        title="Model Performance Comparison"
+    )
+
+    fig.update_layout(yaxis_range=[0, 1])
+
+    st.plotly_chart(fig, use_container_width=True)
+
+else:
+    st.warning("Please select at least one model and one metric.")
+
+#@st.cache_resource
+#def load_xgb_model():
+    #return joblib.load("models/XGBoost.pkl")
