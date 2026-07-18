@@ -136,7 +136,8 @@ prediction = model.predict(input_df)
 
 display_prediction(prediction)
 
-metrics_df = pd.read_csv("https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv")
+metrics_df = pd.read_csv("https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv",
+             index_col="Model")
 
 st.info("Select metrics to display:")
 
