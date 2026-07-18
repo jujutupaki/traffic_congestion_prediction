@@ -152,14 +152,14 @@ st.info("Select model/s to show its performance:")
 
 rf = st.checkbox("Random Forest")
 xgb = st.checkbox("XGBoost")
-lstm = st.checkbox("LSTM")
+#lstm = st.checkbox("LSTM")
 
 # Collect active selections
 selected_models = []
 selected_metrics = []
 if rf: selected_models.append("Random Forest")
 if xgb: selected_models.append("XGBoost")
-if lstm: selected_models.append("LSTM")
+#if lstm: selected_models.append("LSTM")
 if accuracy: selected_metrics.append("Accuracy")
 if precision: selected_metrics.append("Precision")
 if recall: selected_metrics.append("Recall")
