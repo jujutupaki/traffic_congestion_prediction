@@ -136,10 +136,7 @@ prediction = model.predict(input_df)
 
 display_prediction(prediction)
 
-@st.cache_resource
-def load_metrics_df():
-    return joblib.load("models/metrics_df.pkl")
-metrics_df = load_metrics_df
+metrics_df = pd.read_csv("https://github.com/jujutupaki/traffic_congestion_prediction/blob/master/models/metrics_df.csv")
 
 st.info("Select metrics to display:")
 
