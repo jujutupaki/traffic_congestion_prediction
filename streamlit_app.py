@@ -75,6 +75,10 @@ st.info("""Click the button on the top-left corner to expand the sidebar and gen
 Current input for features:""")
 input_df
 
+@st.cache_resource
+def load_xgb_model():
+    return joblib.load("models/XGBoost.pkl")
+
 st.info("Choose a model to start prediction:")
 model_choice = st.radio(
     "Choose a model to start prediction:",
@@ -133,6 +137,10 @@ prediction = model.predict(input_df)
 
 display_prediction(prediction)
 
+@st.cache_resource
+def load_metrics_df():
+    return joblib.load("models/metrics_df.pkl")
+    
 st.info("Select metrics to display:")
 
 accuracy = st.checkbox("Accuracy")
@@ -188,7 +196,3 @@ if selected_models and selected_metrics:
 
 else:
     st.warning("Please select at least one model and one metric.")
-
-#@st.cache_resource
-#def load_xgb_model():
-    #return joblib.load("models/XGBoost.pkl")
