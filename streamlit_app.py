@@ -74,10 +74,6 @@ st.info("""Click the button on the top-left corner to expand the sidebar and gen
 Current input for features:""")
 input_df
 
-@st.cache_resource
-def load_xgb_model():
-    return joblib.load("models/XGBoost.pkl")
-
 st.info("Choose a model to start prediction:")
 model_choice = st.radio(
     "Choose a model to start prediction:",
@@ -128,8 +124,12 @@ def display_prediction(prediction):
         unsafe_allow_html=True
     )
 
+@st.cache_resource
+def load_model():
+    return joblib.load(f"models/{model_choice}.pkl")
+    
 #predict using chosen model
-model = joblib.load(f"{model_choice}.pkl")
+model = load_model()
 prediction = model.predict(input_df)
 
 #call display_pred
@@ -139,7 +139,8 @@ display_prediction(prediction)
 @st.cache_resource
 def load_metrics_df():
     return joblib.load("models/metrics_df.pkl")
-    
+metrics_df = load_metrics_df
+
 st.info("Select metrics to display:")
 
 accuracy = st.checkbox("Accuracy")
@@ -163,8 +164,6 @@ if accuracy: selected_metrics.append("Accuracy")
 if precision: selected_metrics.append("Precision")
 if recall: selected_metrics.append("Recall")
 if f1_score: selected_metrics.append("F1 Score")
-
-metrics_df = joblib.load("metrics_df.pkl")
 
 if selected_models and selected_metrics:
 
