@@ -169,11 +169,15 @@ if selected_models and selected_metrics:
     filtered_df = metrics_df.loc[selected_models, selected_metrics]
 
     # Convert to long format for Plotly
-    plot_df = filtered_df.reset_index().melt(
-        id_vars="index",
-        var_name="Metric",
-        value_name="Score"
-    ).rename(columns={"index": "Model"})
+    plot_df = filtered_df.reset_index()
+
+    id_col = plot_df.columns[0]
+
+    plot_df = plot_df.melt(
+    id_vars=id_col,
+    var_name="Metric",
+    value_name="Score"
+    ).rename(columns={id_col: "Model"})
 
     # Create grouped bar chart
     fig = px.bar(
