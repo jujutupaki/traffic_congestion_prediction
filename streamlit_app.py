@@ -82,6 +82,7 @@ st.info("Choose a model to start prediction:")
 model_choice = st.radio(
     "Choose a model to start prediction:",
     ("Random Forest", "XGBoost", "LSTM"),
+    index=1,
     label_visibility="collapsed"
 )
 
