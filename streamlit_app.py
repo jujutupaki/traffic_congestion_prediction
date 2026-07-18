@@ -81,8 +81,7 @@ def load_xgb_model():
 st.info("Choose a model to start prediction:")
 model_choice = st.radio(
     "Choose a model to start prediction:",
-    ("Random Forest", "XGBoost", "LSTM"),
-    index=1,
+    ("XGBoost"),
     label_visibility="collapsed"
 )
 
