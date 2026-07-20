@@ -13,6 +13,10 @@ st.markdown(
         padding-bottom: 1.5rem !important;
         padding-left: 1.5rem !important;
         padding-right: 1.5rem !important;
+        
+    /* Sidebar - only adjust top padding */
+    [data-testid="stSidebar"] .block-container {
+    padding-top: 1.2rem !important;
     }
     </style>
     """,
