@@ -4,6 +4,24 @@ from datetime import timedelta, datetime
 import joblib
 import plotly.express as px
 
+# Remove whitespace from the top of the page and sidebar
+st.markdown("""
+        <style>
+               .css-18e3th9 {
+                    padding-top: 0rem;
+                    padding-bottom: 10rem;
+                    padding-left: 5rem;
+                    padding-right: 5rem;
+                }
+               .css-1d391kg {
+                    padding-top: 3.5rem;
+                    padding-right: 1rem;
+                    padding-bottom: 3.5rem;
+                    padding-left: 1rem;
+                }
+        </style>
+        """, unsafe_allow_html=True)
+
 st.set_page_config(
     layout="wide",
     page_title="Traffic Congestion Prediction",
@@ -13,10 +31,9 @@ st.set_page_config(
 
 st.title('🚗 Traffic Congestion Prediction')
 
-description = st.text_area(
-"🔴Dataset Overview: The final traffic-weather dataset using selected features"
-"🟡Model Evaluation Dashboard: Compare performance metrics across the Random Forest, XGBoost, and LSTM models"
-"🟢Traffic Predictor: Input custom weather conditions, dates, and times to generate real-time congestion predictions")
+description = st.info('''🔴Dataset Overview: The final traffic-weather dataset using selected features\n
+🟡Model Evaluation Dashboard: Compare performance metrics across the Random Forest, XGBoost, and LSTM models\n
+🟢Traffic Predictor: Input custom weather conditions, dates, and times to generate real-time congestion predictions''')
 
 #dataset
 dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Traffic_Data_Selected_Features.csv')
