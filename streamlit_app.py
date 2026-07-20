@@ -11,7 +11,7 @@ header.stAppHeader {
     background-color: transparent;
 }
 section.stMain .block-container {
-    padding-top: 1rem;
+    padding-top: 2rem;
     z-index: 1;
 }
 </style>""", unsafe_allow_html=True)
