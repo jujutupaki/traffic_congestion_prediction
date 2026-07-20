@@ -156,7 +156,7 @@ if st.button("Start Prediction", use_container_width=True):
 if st.session_state.prediction is not None:
     display_prediction(st.session_state.prediction)
 
-metrics_df = pd.read_csv(https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv,
+metrics_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv',
              index_col=0)
 
 st.info("Select metrics to display:")
