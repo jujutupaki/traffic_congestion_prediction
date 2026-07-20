@@ -80,7 +80,17 @@ with st.sidebar:
       min = date.minute
       hour = date.hour
       dayofyear = date.dayofyear
-    #button style
+      if "prediction" not in st.session_state:
+          st.session_state.prediction = None
+
+     if st.button("Start Prediction", use_container_width=True):
+         model = load_model()
+         st.session_state.prediction = model.predict(input_df)
+
+     if st.session_state.prediction is not None:
+         display_prediction(st.session_state.prediction)
+    
+#button style
 st.markdown("""
 <style>
 div[data-testid="stButton"] > button {
@@ -102,16 +112,6 @@ div[data-testid="stButton"] > button:focus {
 }
 </style>
 """, unsafe_allow_html=True)
-
-if "prediction" not in st.session_state:
-    st.session_state.prediction = None
-
-if st.button("Start Prediction", use_container_width=True):
-    model = load_model()
-    st.session_state.prediction = model.predict(input_df)
-
-if st.session_state.prediction is not None:
-    display_prediction(st.session_state.prediction)
 
 #df for input features
 df_label = {
