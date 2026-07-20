@@ -4,13 +4,17 @@ from datetime import timedelta, datetime
 import joblib
 import plotly.express as px
 
-#add dark theme? spotify???
-dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Traffic_Data_Selected_Features.csv')
-
+st.markdown("""
+<style>
+[data-testid="stAppViewContainer"] .main .block-container {
+    padding-top: 0rem;
+    padding-bottom: 1rem;
+}
+</style>
+""", unsafe_allow_html=True)
 st.set_page_config(
     page_title="Traffic Congestion Prediction",
-    page_icon="🚗",
-    initial_sidebar_state="collapsed",
+    page_icon="🚗"
 )
 
 st.title('🚗 Traffic Congestion Prediction')
@@ -24,6 +28,7 @@ What you can explore here:\n
 🟢 **Traffic Predictor:** Input custom weather conditions, dates, and times to generate real-time congestion predictions\n""")
 
 #dataset
+dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Traffic_Data_Selected_Features.csv')
 with st.expander('View Final Traffic-Weather Dataset'):
     st.write(dataset_df.head(10))
 
