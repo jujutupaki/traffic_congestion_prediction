@@ -9,10 +9,10 @@ st.markdown(
     <style>
     /* Target the main content container and eliminate padding */
     .stAppViewBlockContainer, .block-container {
-        padding-top: 0rem !important;
-        padding-bottom: 0rem !important;
-        padding-left: 0rem !important;
-        padding-right: 0rem !important;
+        padding-top: 10rem !important;
+        padding-bottom: 10rem !important;
+        padding-left: 10rem !important;
+        padding-right: 10rem !important;
     }
     </style>
     """,
