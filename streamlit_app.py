@@ -25,11 +25,11 @@ st.set_page_config(
 
 st.title('🚗 Traffic Congestion Prediction')
 
-st.info("""
-🔴Dataset Overview:</b> The final traffic-weather dataset using selected features<br><br>
-🟡Model Evaluation Dashboard:</b> Compare performance metrics across the Random Forest, XGBoost, and LSTM models<br><br>
-🟢Traffic Predictor:</b> Input custom weather conditions, dates, and times to generate real-time congestion predictions
-""")
+st.info("
+🔴Dataset Overview: The final traffic-weather dataset using selected features
+\n🟡Model Evaluation Dashboard: Compare performance metrics across the Random Forest, XGBoost, and LSTM models
+\n🟢Traffic Predictor: Input custom weather conditions, dates, and times to generate real-time congestion predictions
+")
 
 #dataset
 dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Traffic_Data_Selected_Features.csv')
