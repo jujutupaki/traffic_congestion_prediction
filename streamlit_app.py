@@ -24,7 +24,7 @@ st.set_page_config(
 
 st.markdown(
     """
-    <h1 style="font-size: 2.5rem; margin-bottom: 0;">
+    <h1 style="font-size: 0.5rem; margin-bottom: 0;">
         🚗 Traffic Congestion Prediction
     </h1>
     """,
