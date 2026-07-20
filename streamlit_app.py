@@ -25,10 +25,7 @@ st.set_page_config(
 
 st.title('🚗 Traffic Congestion Prediction')
 
-st.info("""Welcome to **brr-traffic.streamlit.app**, the interactive dashboard for our thesis: \n
-"Predicting Traffic Congestion under Different Weather Conditions Using Machine Learning Approaches"
-
-What you can explore here:\n
+st.info("""
 🔴 **Dataset Overview:** The final traffic-weather dataset using selected features\n
 🟡 **Model Evaluation Dashboard:** Compare performance metrics across the Random Forest, XGBoost, and LSTM models\n
 🟢 **Traffic Predictor:** Input custom weather conditions, dates, and times to generate real-time congestion predictions\n""")
