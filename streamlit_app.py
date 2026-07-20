@@ -80,6 +80,38 @@ with st.sidebar:
       min = date.minute
       hour = date.hour
       dayofyear = date.dayofyear
+    #button style
+st.markdown("""
+<style>
+div[data-testid="stButton"] > button {
+    background-color: white !important;
+    color: black !important;
+    border: 2px solid #d0d0d0 !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+}
+
+div[data-testid="stButton"] > button:hover {
+    background-color: #f5f5f5 !important;
+    border-color: #999999 !important;
+    color: black !important;
+}
+
+div[data-testid="stButton"] > button:focus {
+    box-shadow: none !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
+if "prediction" not in st.session_state:
+    st.session_state.prediction = None
+
+if st.button("Start Prediction", use_container_width=True):
+    model = load_model()
+    st.session_state.prediction = model.predict(input_df)
+
+if st.session_state.prediction is not None:
+    display_prediction(st.session_state.prediction)
 
 #df for input features
 df_label = {
@@ -146,39 +178,6 @@ def display_prediction(prediction):
 @st.cache_resource
 def load_model():
     return joblib.load(f"models/XGBoost.pkl")
-
-#button style
-st.markdown("""
-<style>
-div[data-testid="stButton"] > button {
-    background-color: white !important;
-    color: black !important;
-    border: 2px solid #d0d0d0 !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-}
-
-div[data-testid="stButton"] > button:hover {
-    background-color: #f5f5f5 !important;
-    border-color: #999999 !important;
-    color: black !important;
-}
-
-div[data-testid="stButton"] > button:focus {
-    box-shadow: none !important;
-}
-</style>
-""", unsafe_allow_html=True)
-
-if "prediction" not in st.session_state:
-    st.session_state.prediction = None
-
-if st.button("Start Prediction", use_container_width=True):
-    model = load_model()
-    st.session_state.prediction = model.predict(input_df)
-
-if st.session_state.prediction is not None:
-    display_prediction(st.session_state.prediction)
 
 metrics_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv',
              index_col=0)
