@@ -14,6 +14,7 @@ headingFontSizes = "1.80rem"
 codeFont = "JetBrainsMono"           # JetBrains Mono - popular with developers
 codeBackgroundColor = "#21262d"      # Darker code background - clear distinction
 showSidebarBorder = true
+initial_sidebar_state="collapsed"
 
 [theme.sidebar]
 backgroundColor = "#161b22"          # Darker sidebar - VS Code style
