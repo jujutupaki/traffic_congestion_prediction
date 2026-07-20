@@ -220,11 +220,14 @@ if selected_models and selected_metrics:
         barmode="group",
         text_auto=".3f",
         title="Model Comparison",
-        tickmode="array",
-        tickvals=[0, 0.2, 0.4, 0.6, 0.8]
     )
 
-    fig.update_layout(yaxis_range=[0, 0.8])
+    fig.update_layout(
+    yaxis=dict(
+        range=[0, 0.8],
+        dtick=0.2
+        )
+    )    
 
     st.plotly_chart(fig, use_container_width=True)
 
