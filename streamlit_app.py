@@ -14,7 +14,7 @@ st.markdown("""
                     padding-right: 5rem;
                 }
                .css-1d391kg {
-                    padding-top: 3.5rem;
+                    padding-top: 0rem;
                     padding-right: 1rem;
                     padding-bottom: 3.5rem;
                     padding-left: 1rem;
