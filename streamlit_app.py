@@ -4,18 +4,6 @@ from datetime import timedelta, datetime
 import joblib
 import plotly.express as px
 
-#remove space - main
-st.markdown("""
-<style>
-header.stAppHeader {
-    background-color: transparent;
-}
-section.stMain .block-container {
-    padding-top: 0rem;
-    z-index: 1;
-}
-</style>""", unsafe_allow_html=True)
-
 st.set_page_config(
     layout="wide",
     page_title="Traffic Congestion Prediction",
