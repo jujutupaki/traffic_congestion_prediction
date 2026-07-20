@@ -4,8 +4,6 @@ from datetime import timedelta, datetime
 import joblib
 import plotly.express as px
 
-st.write(st.__version__)
-
 #add dark theme? spotify???
 dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Traffic_Data_Selected_Features.csv')
 
@@ -76,27 +74,37 @@ st.info("""Click the button on the top-left corner to expand the sidebar and gen
 Current input for features:""")
 input_df
 
+pred_dict = {
+    0: "Low Traffic",
+    1: "Moderate Traffic",
+    2: "Heavy Traffic"
+}
+
 def display_prediction(prediction):
-    # map predictions
-    pred_dict = {
-        0: "Low Traffic",
-        1: "Moderate Traffic",
-        2: "Heavy Traffic"
-    }
+    # No prediction yet
+    if prediction is None:
+        bg_color = "#e9ecef"      # Light gray
+        text_color = "#6c757d"    # Dark gray
+        prediction_text = "No Prediction Yet"
 
-    # get predicted class
-    prediction = int(prediction[0])
-
-    # color settings
-    if prediction == 0:
-        bg_color = "#d4edda"      # Light green
-        text_color = "#155724"    # Dark green
-    elif prediction == 1:
-        bg_color = "#fff3cd"      # Light yellow
-        text_color = "#856404"    # Dark yellow
     else:
-        bg_color = "#f8d7da"      # Light red
-        text_color = "#721c24"    # Dark red
+        # get predicted class
+        prediction = int(prediction[0])
+
+        if prediction == 0:
+            bg_color = "#d4edda"      # Light green
+            text_color = "#155724"    # Dark green
+        elif prediction == 1:
+            bg_color = "#fff3cd"      # Light yellow
+            text_color = "#856404"    # Dark yellow
+        elif prediction == 2:
+            bg_color = "#f8d7da"      # Light red
+            text_color = "#721c24"    # Dark red
+        else:
+            bg_color = "#e9ecef"
+            text_color = "#6c757d"
+
+        prediction_text = pred_dict[prediction]
 
     st.markdown(
         f"""
@@ -106,13 +114,13 @@ def display_prediction(prediction):
             border-radius:12px;
             text-align:center;
             border:2px solid {text_color};
-             margin-bottom:30px;
+            margin-bottom:30px;
         ">
             <h3 style="margin:0; color:{text_color};">
-                🚦Predicted Traffic Congestion:
+                🚦 Predicted Traffic Congestion:
             </h3>
             <h1 style="margin-top:10px; color:{text_color};">
-                {pred_dict[prediction]}
+                {prediction_text}
             </h1>
         </div>
         """,
@@ -153,24 +161,28 @@ if st.button("Start Prediction", use_container_width=True):
     model = load_model()
     st.session_state.prediction = model.predict(input_df)
 
-if st.session_state.prediction is not None:
-    display_prediction(st.session_state.prediction)
+# Always display the prediction box
+display_prediction(st.session_state.prediction)
 
 metrics_df = pd.read_csv("https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv",
              index_col=0)
 
-st.info("Select metrics to display:")
+col1, col2 = st.columns(2)
 
-accuracy = st.checkbox("Accuracy")
-precision = st.checkbox("Precision")
-recall = st.checkbox("Recall")
-f1_score = st.checkbox("F1 Score")
+with col1:
+    st.info("Select metrics to display:")
 
-st.info("Select model/s to show its performance:")
+    accuracy = st.checkbox("Accuracy")
+    precision = st.checkbox("Precision")
+    recall = st.checkbox("Recall")
+    f1_score = st.checkbox("F1 Score")
 
-rf = st.checkbox("Random Forest")
-xgb = st.checkbox("XGBoost")
-lstm = st.checkbox("LSTM")
+with col2:
+    st.info("Select model/s to show its performance:")
+
+    rf = st.checkbox("Random Forest")
+    xgb = st.checkbox("XGBoost")
+    lstm = st.checkbox("LSTM")
 
 # Collect active selections
 selected_models = []
