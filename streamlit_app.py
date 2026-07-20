@@ -120,8 +120,33 @@ def display_prediction(prediction):
 @st.cache_resource
 def load_model():
     return joblib.load(f"models/XGBoost.pkl")
-    
-if st.button("🚀 Start Prediction", use_container_width=True):
+
+#button style
+st.markdown("""
+<style>
+div.stButton > button {
+    background-color: white;
+    color: black;
+    border: 2px solid #d0d0d0;
+    border-radius: 8px;
+    padding: 0.5rem 1.5rem;
+    width: auto;
+    display: inline-block;
+    font-weight: 600;
+}
+
+div.stButton > button:hover {
+    background-color: #f5f5f5;
+    border-color: #999999;
+}
+
+div.stButton {
+    text-align: left;
+}
+</style>
+""", unsafe_allow_html=True)
+
+if st.button("Start Prediction"):
     model = load_model()
     prediction = model.predict(input_df)
     display_prediction(prediction)
