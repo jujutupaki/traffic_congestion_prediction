@@ -15,6 +15,8 @@ section.stMain .block-container {
 }
 </style>""", unsafe_allow_html=True)
 
+st.title("🚗 Traffic Congestion Prediction")
+
 st.set_page_config(
     layout="wide",
     page_title="Traffic Congestion Prediction",
