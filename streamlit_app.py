@@ -62,6 +62,53 @@ st.markdown(
             width: 450px,
         </style>""", unsafe_allow_html=True)
 
+def display_prediction(prediction):
+    # map predictions
+    pred_dict = {
+        0: "Low Traffic",
+        1: "Moderate Traffic",
+        2: "Heavy Traffic"
+    }
+
+    # get predicted class
+    prediction = int(prediction[0])
+
+    # color settings
+    if prediction == 0:
+        bg_color = "#d4edda"      # Light green
+        text_color = "#155724"    # Dark green
+    elif prediction == 1:
+        bg_color = "#fff3cd"      # Light yellow
+        text_color = "#856404"    # Dark yellow
+    else:
+        bg_color = "#f8d7da"      # Light red
+        text_color = "#721c24"    # Dark red
+
+    st.markdown(
+        f"""
+        <div style="
+            background-color:{bg_color};
+            padding:25px;
+            border-radius:12px;
+            text-align:center;
+            border:2px solid {text_color};
+             margin-bottom:30px;
+        ">
+            <h3 style="margin:0; color:{text_color};">
+                🚦Predicted Traffic Congestion:
+            </h3>
+            <h1 style="margin-top:10px; color:{text_color};">
+                {pred_dict[prediction]}
+            </h1>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+@st.cache_resource
+def load_model():
+    return joblib.load(f"models/XGBoost.pkl")
+
 # User-defined features
 with st.sidebar:
       st.header("Please input features:")
@@ -131,53 +178,6 @@ input_df = pd.DataFrame(df_label, index=[0])
 st.info("""Click the button on the top-left corner to expand the sidebar and generate a prediction!\n
 Current input for features:""")
 input_df
-
-def display_prediction(prediction):
-    # map predictions
-    pred_dict = {
-        0: "Low Traffic",
-        1: "Moderate Traffic",
-        2: "Heavy Traffic"
-    }
-
-    # get predicted class
-    prediction = int(prediction[0])
-
-    # color settings
-    if prediction == 0:
-        bg_color = "#d4edda"      # Light green
-        text_color = "#155724"    # Dark green
-    elif prediction == 1:
-        bg_color = "#fff3cd"      # Light yellow
-        text_color = "#856404"    # Dark yellow
-    else:
-        bg_color = "#f8d7da"      # Light red
-        text_color = "#721c24"    # Dark red
-
-    st.markdown(
-        f"""
-        <div style="
-            background-color:{bg_color};
-            padding:25px;
-            border-radius:12px;
-            text-align:center;
-            border:2px solid {text_color};
-             margin-bottom:30px;
-        ">
-            <h3 style="margin:0; color:{text_color};">
-                🚦Predicted Traffic Congestion:
-            </h3>
-            <h1 style="margin-top:10px; color:{text_color};">
-                {pred_dict[prediction]}
-            </h1>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-@st.cache_resource
-def load_model():
-    return joblib.load(f"models/XGBoost.pkl")
 
 metrics_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv',
              index_col=0)
