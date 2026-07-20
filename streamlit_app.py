@@ -4,6 +4,7 @@ from datetime import timedelta, datetime
 import joblib
 import plotly.express as px
 
+#remove space - main
 st.markdown("""
 <style>
 header.stAppHeader {
@@ -56,6 +57,18 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
+#remove space - sidebar
+st.markdown("""
+<style>
+header.stAppHeader {
+    background-color: transparent;
+}
+section.stMain .block-container {
+    padding-top: 0rem;
+    z-index: 1;
+}
+</style>""", unsafe_allow_html=True)
 
 # User-defined features
 with st.sidebar:
