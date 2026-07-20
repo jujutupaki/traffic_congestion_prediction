@@ -219,7 +219,7 @@ if selected_models and selected_metrics:
         color="Model",
         barmode="group",
         text_auto=".3f",
-        title="Model Comparison"
+        title="Model Comparison",
         tickmode="array",
         tickvals=[0, 0.2, 0.4, 0.6, 0.8]
     )
