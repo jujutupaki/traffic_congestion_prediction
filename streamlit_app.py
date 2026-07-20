@@ -13,12 +13,6 @@ st.markdown("""
                     padding-left: 5rem;
                     padding-right: 5rem;
                 }
-               .css-1d391kg {
-                    padding-top: 0rem;
-                    padding-right: 1rem;
-                    padding-bottom: 3.5rem;
-                    padding-left: 1rem;
-                }
         </style>
         """, unsafe_allow_html=True)
 
