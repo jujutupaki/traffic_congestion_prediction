@@ -6,12 +6,15 @@ import plotly.express as px
 
 st.markdown("""
 <style>
-[data-testid="stAppViewContainer"] .main .block-container {
-    padding-top: 0rem;
-    padding-bottom: 1rem;
+header.stAppHeader {
+    background-color: transparent;
 }
-</style>
-""", unsafe_allow_html=True)
+section.stMain .block-container {
+    padding-top: 0rem;
+    z-index: 1;
+}
+</style>""", unsafe_allow_html=True)
+
 st.set_page_config(
     layout="wide",
     page_title="Traffic Congestion Prediction",
