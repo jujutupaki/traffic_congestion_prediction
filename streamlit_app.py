@@ -26,11 +26,9 @@ st.set_page_config(
 st.title('🚗 Traffic Congestion Prediction')
 
 st.info("""
-<div>
-🔴 <b>Dataset Overview:</b> The final traffic-weather dataset using selected features<br><br>
-🟡 <b>Model Evaluation Dashboard:</b> Compare performance metrics across the Random Forest, XGBoost, and LSTM models<br><br>
-🟢 <b>Traffic Predictor:</b> Input custom weather conditions, dates, and times to generate real-time congestion predictions
-</div>
+🔴Dataset Overview:</b> The final traffic-weather dataset using selected features<br><br>
+🟡Model Evaluation Dashboard:</b> Compare performance metrics across the Random Forest, XGBoost, and LSTM models<br><br>
+🟢Traffic Predictor:</b> Input custom weather conditions, dates, and times to generate real-time congestion predictions
 """)
 
 #dataset
