@@ -225,9 +225,10 @@ if selected_models and selected_metrics:
     fig.update_layout(
     yaxis=dict(
         range=[0, 0.8],
-        dtick=0.2
+        tickmode="array",
+        tickvals=[0, 0.2, 0.4, 0.6, 0.8]
         )
-    )    
+    )
 
     st.plotly_chart(fig, use_container_width=True)
 
