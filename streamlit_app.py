@@ -4,44 +4,28 @@ from datetime import timedelta, datetime
 import joblib
 import plotly.express as px
 
-st.markdown(
-    """
-    <style>
-    /* Target the main content container and eliminate padding */
-    .stAppViewBlockContainer, .block-container {
-        padding-top: 1.2rem !important;
-        padding-bottom: 1.5rem !important;
-        padding-left: 1.5rem !important;
-        padding-right: 1.5rem !important;
-        
-    /* Sidebar - only adjust top padding */
-    [data-testid="stSidebar"] .block-container {
-    padding-top: 1.2rem !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+st.write(st.__version__)
 
-st.title("🚗 Traffic Congestion Prediction")
+#add dark theme? spotify???
+dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Traffic_Data_Selected_Features.csv')
 
 st.set_page_config(
-    layout="wide",
     page_title="Traffic Congestion Prediction",
     page_icon="🚗",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed",
 )
 
-st.markdown("""
-🔴 **Dataset Overview:** The final traffic-weather dataset using selected features
+st.title('🚗 Traffic Congestion Prediction')
 
-🟡 **Model Evaluation Dashboard:** Compare performance metrics across the Random Forest, XGBoost, and LSTM models
+st.info("""Welcome to **brr-traffic.streamlit.app**, the interactive dashboard for our thesis: \n
+"Predicting Traffic Congestion under Different Weather Conditions Using Machine Learning Approaches"
 
-🟢 **Traffic Predictor:** Input custom weather conditions, dates, and times to generate real-time congestion predictions
-""")
+What you can explore here:\n
+🔴 **Dataset Overview:** The final traffic-weather dataset using selected features\n
+🟡 **Model Evaluation Dashboard:** Compare performance metrics across the Random Forest, XGBoost, and LSTM models\n
+🟢 **Traffic Predictor:** Input custom weather conditions, dates, and times to generate real-time congestion predictions\n""")
 
 #dataset
-dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Traffic_Data_Selected_Features.csv')
 with st.expander('View Final Traffic-Weather Dataset'):
     st.write(dataset_df.head(10))
 
@@ -54,13 +38,43 @@ y = train_val['Simulated Traffic Level']
 X_test = test.drop(columns=['Simulated Traffic Level', '10_Minutes_Interval'])
 y_test = test['Simulated Traffic Level']
 
-#sidebar style
-st.markdown(
-    """
-    <style>
-        section[data-testid="stSidebar"] {
-            width: 450px,
-        </style>""", unsafe_allow_html=True)
+# User-defined features
+with st.sidebar:
+      st.header("PLEASE INPUT FEATURES")
+      date = st.datetime_input(
+      "Select date and time:",
+      datetime(2025, 11, 19, 16, 40),
+      step=timedelta(minutes=10))
+      temp = st.number_input("Select temperature (°C)", value=0.0)
+      soil_temp_0 = st.number_input("Select soil temperature (0-7 cm)", value=0.0)
+      driving_direction = st.selectbox("Select driving direction (Backward: 0, Forward: 1)", [0, 1])
+      app_temp = st.number_input("Select apparent temperature (°C)", value=0.0)
+      soil_temp_7 = st.number_input("Select soil temperature (7-28 cm)", value=0.0)
+      s_pressure = st.number_input("Select surface pressure (hPa)", value=0.0)
+      v_pressure = st.number_input("Select vapour pressure (kPa)", value=0.0)
+      date = pd.to_datetime(date)
+      min = date.minute
+      hour = date.hour
+      dayofyear = date.dayofyear
+
+#df for input features
+df_label = {
+    'Hour': hour,
+    'soil_temperature_0_to_7cm (°C)': soil_temp_0,
+    'temperature_2m (°C)': temp,
+    'Driving Direction': driving_direction,
+    'apparent_temperature (°C)': app_temp,
+    'soil_temperature_7_to_28cm (°C)': soil_temp_7,
+    'surface_pressure (hPa)': s_pressure,
+    'vapour_pressure_deficit (kPa)': v_pressure,
+    'DayOfYear': dayofyear,
+    'Minute': min
+}
+
+input_df = pd.DataFrame(df_label, index=[0])
+st.info("""Click the button on the top-left corner to expand the sidebar and generate a prediction!\n
+Current input for features:""")
+input_df
 
 def display_prediction(prediction):
     # map predictions
@@ -109,76 +123,40 @@ def display_prediction(prediction):
 def load_model():
     return joblib.load(f"models/XGBoost.pkl")
 
-# User-defined features
-with st.sidebar:
-      st.header("Please input features:")
-      date = st.datetime_input(
-      "Select date and time:",
-      datetime(2025, 11, 19, 16, 40),
-      step=timedelta(minutes=10))
-      temp = st.number_input("Select temperature (°C)", value=0.0)
-      soil_temp_0 = st.number_input("Select soil temperature (0-7 cm)", value=0.0)
-      driving_direction = st.selectbox("Select driving direction (Backward: 0, Forward: 1)", [0, 1])
-      app_temp = st.number_input("Select apparent temperature (°C)", value=0.0)
-      soil_temp_7 = st.number_input("Select soil temperature (7-28 cm)", value=0.0)
-      s_pressure = st.number_input("Select surface pressure (hPa)", value=0.0)
-      v_pressure = st.number_input("Select vapour pressure (kPa)", value=0.0)
-      date = pd.to_datetime(date)
-      min = date.minute
-      hour = date.hour
-      dayofyear = date.dayofyear
+#button style
+st.markdown("""
+<style>
+div[data-testid="stButton"] > button {
+    background-color: white !important;
+    color: black !important;
+    border: 2px solid #d0d0d0 !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+}
 
-      #df for input features
-      df_label = {
-        'Hour': hour,
-        'soil_temperature_0_to_7cm (°C)': soil_temp_0,
-        'temperature_2m (°C)': temp,
-        'Driving Direction': driving_direction,
-        'apparent_temperature (°C)': app_temp,
-        'soil_temperature_7_to_28cm (°C)': soil_temp_7,
-        'surface_pressure (hPa)': s_pressure,
-        'vapour_pressure_deficit (kPa)': v_pressure,
-        'DayOfYear': dayofyear,
-        'Minute': min
-      }
+div[data-testid="stButton"] > button:hover {
+    background-color: #f5f5f5 !important;
+    border-color: #999999 !important;
+    color: black !important;
+}
 
-      input_df = pd.DataFrame(df_label, index=[0])
-    
-      #button style
-      st.markdown("""
-      <style>
-      div[data-testid="stButton"] > button {
-        background-color: white !important;
-        color: black !important;
-        border: 2px solid #d0d0d0 !important;
-        border-radius: 8px !important;
-        font-weight: 600 !important;
-      }
-    
-      div[data-testid="stButton"] > button:hover {
-        background-color: #f5f5f5 !important;
-        border-color: #999999 !important;
-        color: black !important;
-      }  
-    
-      div[data-testid="stButton"] > button:focus {
-        box-shadow: none !important;
-      }
-      </style>""", unsafe_allow_html=True)
-    
-      if "prediction" not in st.session_state:
-          st.session_state.prediction = None
-      if st.button("Start Prediction", use_container_width=True):
-          model = load_model()
-          st.session_state.prediction = model.predict(input_df)
+div[data-testid="stButton"] > button:focus {
+    box-shadow: none !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
-st.info("""Click the button on the top-left corner to expand the sidebar and generate a prediction!\n
-Current input for features:""")
+if "prediction" not in st.session_state:
+    st.session_state.prediction = None
+
+if st.button("Start Prediction", use_container_width=True):
+    model = load_model()
+    st.session_state.prediction = model.predict(input_df)
 
 if st.session_state.prediction is not None:
-          display_prediction(st.session_state.prediction)
+    display_prediction(st.session_state.prediction)
 
-metrics_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv',
+metrics_df = pd.read_csv("https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv",
              index_col=0)
 
 st.info("Select metrics to display:")
