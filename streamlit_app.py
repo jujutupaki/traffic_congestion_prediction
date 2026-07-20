@@ -124,6 +124,10 @@ def load_model():
 #button style
 st.markdown("""
 <style>
+div.stButton {
+    text-align: center;
+}
+
 div.stButton > button {
     background-color: white;
     color: black;
@@ -138,10 +142,6 @@ div.stButton > button {
 div.stButton > button:hover {
     background-color: #f5f5f5;
     border-color: #999999;
-}
-
-div.stButton {
-    text-align: left;
 }
 </style>
 """, unsafe_allow_html=True)
