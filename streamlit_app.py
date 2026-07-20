@@ -226,7 +226,7 @@ if selected_models and selected_metrics:
     yaxis=dict(
         range=[0, 0.8],
         tickmode="array",
-        tickvals=[0, 0.2, 0.4, 0.6, 0.8]
+        tickvals=[0, 0.2, 0.4, 0.6, 0.78]
         )
     )
 
