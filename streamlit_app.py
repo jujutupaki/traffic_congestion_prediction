@@ -22,7 +22,14 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-st.title('🚗 Traffic Congestion Prediction')
+st.markdown(
+    """
+    <h1 style="font-size: 2.5rem; margin-bottom: 0;">
+        🚗 Traffic Congestion Prediction
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
 
 description = st.info('''🔴Dataset Overview: The final traffic-weather dataset using selected features\n
 🟡Model Evaluation Dashboard: Compare performance metrics across the Random Forest, XGBoost, and LSTM models\n
