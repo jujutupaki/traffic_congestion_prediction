@@ -11,7 +11,7 @@ header.stAppHeader {
     background-color: transparent;
 }
 section.stMain .block-container {
-    padding-top: 0rem;
+    padding-top: 0.25rem;
     z-index: 1;
 }
 </style>""", unsafe_allow_html=True)
@@ -72,7 +72,7 @@ section.stMain .block-container {
 
 # User-defined features
 with st.sidebar:
-      st.header("PLEASE INPUT FEATURES")
+      st.header("PLEASE INPUT FEATURES:")
       date = st.datetime_input(
       "Select date and time:",
       datetime(2025, 11, 19, 16, 40),
