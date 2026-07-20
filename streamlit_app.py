@@ -123,6 +123,29 @@ def display_prediction(prediction):
 def load_model():
     return joblib.load(f"models/XGBoost.pkl")
 
+#button style
+st.markdown("""
+<style>
+div[data-testid="stButton"] > button {
+    background-color: white !important;
+    color: black !important;
+    border: 2px solid #d0d0d0 !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+}
+
+div[data-testid="stButton"] > button:hover {
+    background-color: #f5f5f5 !important;
+    border-color: #999999 !important;
+    color: black !important;
+}
+
+div[data-testid="stButton"] > button:focus {
+    box-shadow: none !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
 if st.button("Start Prediction", use_container_width=True):
     model = load_model()
     prediction = model.predict(input_df)
