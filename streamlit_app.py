@@ -124,24 +124,18 @@ def load_model():
 #button style
 st.markdown("""
 <style>
-div.stButton {
+div[data-testid="stButton"] {
     display: flex;
     justify-content: center;
 }
 
-div.stButton > button {
-    background-color: white;
+div[data-testid="stButton"] > button {
+    width: fit-content;
+    background: white;
     color: black;
     border: 2px solid #d0d0d0;
     border-radius: 8px;
-    padding: 0.5rem 1.5rem;
-    width: fit-content;
     font-weight: 600;
-}
-
-div.stButton > button:hover {
-    background-color: #f5f5f5;
-    border-color: #999999;
 }
 </style>
 """, unsafe_allow_html=True)
