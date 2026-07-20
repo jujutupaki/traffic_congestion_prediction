@@ -36,6 +36,17 @@ y = train_val['Simulated Traffic Level']
 X_test = test.drop(columns=['Simulated Traffic Level', '10_Minutes_Interval'])
 y_test = test['Simulated Traffic Level']
 
+#sidebar size
+st.markdown(
+    """
+    <style>
+        section[data-testid="stSidebar"] {
+            width: 400px
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # User-defined features
 with st.sidebar:
       st.header("PLEASE INPUT FEATURES")
