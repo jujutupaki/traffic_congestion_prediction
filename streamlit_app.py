@@ -219,10 +219,9 @@ if selected_models and selected_metrics:
         color="Model",
         barmode="group",
         text_auto=".3f",
-        title="Model Performance Comparison"
     )
 
-    fig.update_layout(yaxis_range=[0, 1])
+    fig.update_layout(yaxis_range=[0, 0.82])
 
     st.plotly_chart(fig, use_container_width=True)
 
