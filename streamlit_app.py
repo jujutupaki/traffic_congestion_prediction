@@ -4,16 +4,20 @@ from datetime import timedelta, datetime
 import joblib
 import plotly.express as px
 
-st.markdown("""
-<style>
-header.stAppHeader {
-    background-color: transparent;
-}
-section.stMain .block-container {
-    padding-top: 0rem;
-    z-index: 1;
-}
-</style>""", unsafe_allow_html=True)
+st.markdown(
+    """
+    <style>
+    /* Target the main content container and eliminate padding */
+    .stAppViewBlockContainer, .block-container {
+        padding-top: 0rem !important;
+        padding-bottom: 0rem !important;
+        padding-left: 0rem !important;
+        padding-right: 0rem !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 st.title("🚗 Traffic Congestion Prediction")
 
