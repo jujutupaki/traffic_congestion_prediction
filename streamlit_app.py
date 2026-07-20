@@ -4,18 +4,6 @@ from datetime import timedelta, datetime
 import joblib
 import plotly.express as px
 
-# Remove whitespace from the top of the page and sidebar
-st.markdown("""
-        <style>
-               .css-18e3th9 {
-                    padding-top: 0rem;
-                    padding-bottom: 10rem;
-                    padding-left: 5rem;
-                    padding-right: 5rem;
-                }
-        </style>
-        """, unsafe_allow_html=True)
-
 st.set_page_config(
     layout="wide",
     page_title="Traffic Congestion Prediction",
