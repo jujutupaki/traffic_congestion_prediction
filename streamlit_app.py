@@ -57,7 +57,7 @@ st.markdown(
             background-color: transparent;
         }
         section.stMain .block-container {
-        padding-top: 0rem;
+        margin-top: -1rem;
         z-index: 1;
         </style>""",unsafe_allow_html=True)
 
