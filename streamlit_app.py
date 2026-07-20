@@ -4,8 +4,6 @@ from datetime import timedelta, datetime
 import joblib
 import plotly.express as px
 
-st.write(st.__version__)
-
 #add dark theme? spotify???
 dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Traffic_Data_Selected_Features.csv')
 
