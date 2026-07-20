@@ -109,20 +109,6 @@ def display_prediction(prediction):
 def load_model():
     return joblib.load(f"models/XGBoost.pkl")
 
-#df for input features
-df_label = {
-    'Hour': hour,
-    'soil_temperature_0_to_7cm (°C)': soil_temp_0,
-    'temperature_2m (°C)': temp,
-    'Driving Direction': driving_direction,
-    'apparent_temperature (°C)': app_temp,
-    'soil_temperature_7_to_28cm (°C)': soil_temp_7,
-    'surface_pressure (hPa)': s_pressure,
-    'vapour_pressure_deficit (kPa)': v_pressure,
-    'DayOfYear': dayofyear,
-    'Minute': min
-}
-
 input_df = pd.DataFrame(df_label, index=[0])
 input_df
 
@@ -144,6 +130,20 @@ with st.sidebar:
       min = date.minute
       hour = date.hour
       dayofyear = date.dayofyear
+
+      #df for input features
+      df_label = {
+        'Hour': hour,
+        'soil_temperature_0_to_7cm (°C)': soil_temp_0,
+        'temperature_2m (°C)': temp,
+        'Driving Direction': driving_direction,
+        'apparent_temperature (°C)': app_temp,
+        'soil_temperature_7_to_28cm (°C)': soil_temp_7,
+        'surface_pressure (hPa)': s_pressure,
+        'vapour_pressure_deficit (kPa)': v_pressure,
+        'DayOfYear': dayofyear,
+        'Minute': min
+      }
 
       #button style
       st.markdown("""
