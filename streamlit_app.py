@@ -83,12 +83,12 @@ with st.sidebar:
       if "prediction" not in st.session_state:
           st.session_state.prediction = None
 
-     if st.button("Start Prediction", use_container_width=True):
-         model = load_model()
-         st.session_state.prediction = model.predict(input_df)
+      if st.button("Start Prediction", use_container_width=True):
+          model = load_model()
+          st.session_state.prediction = model.predict(input_df)
 
-     if st.session_state.prediction is not None:
-         display_prediction(st.session_state.prediction)
+      if st.session_state.prediction is not None:
+          display_prediction(st.session_state.prediction)
     
 #button style
 st.markdown("""
