@@ -109,6 +109,23 @@ def display_prediction(prediction):
 def load_model():
     return joblib.load(f"models/XGBoost.pkl")
 
+#df for input features
+df_label = {
+    'Hour': hour,
+    'soil_temperature_0_to_7cm (°C)': soil_temp_0,
+    'temperature_2m (°C)': temp,
+    'Driving Direction': driving_direction,
+    'apparent_temperature (°C)': app_temp,
+    'soil_temperature_7_to_28cm (°C)': soil_temp_7,
+    'surface_pressure (hPa)': s_pressure,
+    'vapour_pressure_deficit (kPa)': v_pressure,
+    'DayOfYear': dayofyear,
+    'Minute': min
+}
+
+input_df = pd.DataFrame(df_label, index=[0])
+input_df
+
 # User-defined features
 with st.sidebar:
       st.header("Please input features:")
@@ -127,57 +144,40 @@ with st.sidebar:
       min = date.minute
       hour = date.hour
       dayofyear = date.dayofyear
+
+      #button style
+      st.markdown("""
+      <style>
+      div[data-testid="stButton"] > button {
+        background-color: white !important;
+        color: black !important;
+        border: 2px solid #d0d0d0 !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+      }
+    
+      div[data-testid="stButton"] > button:hover {
+        background-color: #f5f5f5 !important;
+        border-color: #999999 !important;
+        color: black !important;
+      }  
+    
+      div[data-testid="stButton"] > button:focus {
+        box-shadow: none !important;
+      }
+      </style>""", unsafe_allow_html=True)
+    
       if "prediction" not in st.session_state:
           st.session_state.prediction = None
-
       if st.button("Start Prediction", use_container_width=True):
           model = load_model()
           st.session_state.prediction = model.predict(input_df)
 
-      if st.session_state.prediction is not None:
-          display_prediction(st.session_state.prediction)
-    
-#button style
-st.markdown("""
-<style>
-div[data-testid="stButton"] > button {
-    background-color: white !important;
-    color: black !important;
-    border: 2px solid #d0d0d0 !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-}
-
-div[data-testid="stButton"] > button:hover {
-    background-color: #f5f5f5 !important;
-    border-color: #999999 !important;
-    color: black !important;
-}
-
-div[data-testid="stButton"] > button:focus {
-    box-shadow: none !important;
-}
-</style>
-""", unsafe_allow_html=True)
-
-#df for input features
-df_label = {
-    'Hour': hour,
-    'soil_temperature_0_to_7cm (°C)': soil_temp_0,
-    'temperature_2m (°C)': temp,
-    'Driving Direction': driving_direction,
-    'apparent_temperature (°C)': app_temp,
-    'soil_temperature_7_to_28cm (°C)': soil_temp_7,
-    'surface_pressure (hPa)': s_pressure,
-    'vapour_pressure_deficit (kPa)': v_pressure,
-    'DayOfYear': dayofyear,
-    'Minute': min
-}
-
-input_df = pd.DataFrame(df_label, index=[0])
 st.info("""Click the button on the top-left corner to expand the sidebar and generate a prediction!\n
 Current input for features:""")
-input_df
+
+if st.session_state.prediction is not None:
+          display_prediction(st.session_state.prediction)
 
 metrics_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv',
              index_col=0)
