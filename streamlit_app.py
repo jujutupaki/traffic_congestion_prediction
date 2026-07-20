@@ -57,7 +57,6 @@ st.markdown(
 
 # User-defined features
 with st.sidebar:
-      st.header("PLEASE INPUT FEATURES:")
       date = st.datetime_input(
       "Select date and time:",
       datetime(2025, 11, 19, 16, 40),
