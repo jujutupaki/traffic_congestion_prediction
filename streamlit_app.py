@@ -146,10 +146,15 @@ div[data-testid="stButton"] > button:focus {
 </style>
 """, unsafe_allow_html=True)
 
+if "prediction" not in st.session_state:
+    st.session_state.prediction = None
+
 if st.button("Start Prediction", use_container_width=True):
     model = load_model()
-    prediction = model.predict(input_df)
-    display_prediction(prediction)
+    st.session_state.prediction = model.predict(input_df)
+
+if st.session_state.prediction is not None:
+    display_prediction(st.session_state.prediction)
 
 metrics_df = pd.read_csv("https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv",
              index_col=0)
