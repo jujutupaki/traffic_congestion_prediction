@@ -53,13 +53,10 @@ st.markdown(
     <style>
         section[data-testid="stSidebar"] {
             width: 450px,
-        header.stAppHeader {
-            background-color: transparent;
-        }
-        section.stMain .block-container {
-        padding-top: 0.0rem;
+        .css-o18uir.e16nr0p33 {
+      margin-top: -75px;
         z-index: 1;
-        </style>""",unsafe_allow_html=True)
+        </style>""", unsafe_allow_html=True)
 
 # User-defined features
 with st.sidebar:
