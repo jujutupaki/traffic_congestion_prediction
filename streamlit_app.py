@@ -35,6 +35,29 @@ y = train_val['Simulated Traffic Level']
 X_test = test.drop(columns=['Simulated Traffic Level', '10_Minutes_Interval'])
 y_test = test['Simulated Traffic Level']
 
+#button style
+st.markdown("""
+<style>
+div[data-testid="stButton"] > button {
+    background-color: white !important;
+    color: black !important;
+    border: 2px solid #d0d0d0 !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+}
+
+div[data-testid="stButton"] > button:hover {
+    background-color: #f5f5f5 !important;
+    border-color: #999999 !important;
+    color: black !important;
+}
+
+div[data-testid="stButton"] > button:focus {
+    box-shadow: none !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
 # User-defined features
 with st.sidebar:
       st.header("PLEASE INPUT FEATURES")
@@ -53,6 +76,10 @@ with st.sidebar:
       min = date.minute
       hour = date.hour
       dayofyear = date.dayofyear
+      predict_clicked = st.sidebar.button(
+      "Start Prediction",
+      use_container_width=True
+      )
 
 #df for input features
 df_label = {
@@ -130,33 +157,10 @@ def display_prediction(prediction):
 def load_model():
     return joblib.load(f"models/XGBoost.pkl")
 
-#button style
-st.markdown("""
-<style>
-div[data-testid="stButton"] > button {
-    background-color: white !important;
-    color: black !important;
-    border: 2px solid #d0d0d0 !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-}
-
-div[data-testid="stButton"] > button:hover {
-    background-color: #f5f5f5 !important;
-    border-color: #999999 !important;
-    color: black !important;
-}
-
-div[data-testid="stButton"] > button:focus {
-    box-shadow: none !important;
-}
-</style>
-""", unsafe_allow_html=True)
-
 if "prediction" not in st.session_state:
     st.session_state.prediction = None
 
-if st.button("Start Prediction", use_container_width=True):
+if predict_clicked:
     model = load_model()
     st.session_state.prediction = model.predict(input_df)
 
