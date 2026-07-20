@@ -132,12 +132,13 @@ div[data-testid="stButton"] {
 }
 
 div[data-testid="stButton"] > button {
-    width: fit-content;
-    background: white;
-    color: black;
-    border: 2px solid #d0d0d0;
-    border-radius: 8px;
-    font-weight: 600;
+    width: auto !important;
+    background: white !important;
+    color: black !important;
+    border: 2px solid #d0d0d0 !important;
+    border-radius: 8px !important;
+    padding: 0.5rem 1.5rem !important;
+    font-weight: 600 !important;
 }
 </style>
 """, unsafe_allow_html=True)
