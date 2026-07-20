@@ -23,7 +23,7 @@ What you can explore here:\n
 🟢 **Traffic Predictor:** Input custom weather conditions, dates, and times to generate real-time congestion predictions\n""")
 
 #dataset
-with st.expander('View Final Traffic-Weather Dataset'):
+with st.expander('View Final Traffic-Weather Dataset', expanded=True):
     st.write(dataset_df.head(10))
 
 #CV SPlit
