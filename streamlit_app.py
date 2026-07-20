@@ -13,8 +13,10 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 st.set_page_config(
+    layout="wide",
     page_title="Traffic Congestion Prediction",
-    page_icon="🚗"
+    page_icon="🚗",
+    initial_sidebar_state="expanded"
 )
 
 st.title('🚗 Traffic Congestion Prediction')
