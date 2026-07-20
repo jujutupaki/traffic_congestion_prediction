@@ -74,13 +74,6 @@ st.info("""Click the button on the top-left corner to expand the sidebar and gen
 Current input for features:""")
 input_df
 
-st.info("Choose a model to start prediction:")
-model_choice = st.radio(
-    "Choose a model to start prediction:",
-    ("XGBoost"),
-    label_visibility="collapsed"
-)
-
 def display_prediction(prediction):
     # map predictions
     pred_dict = {
@@ -114,7 +107,7 @@ def display_prediction(prediction):
              margin-bottom:30px;
         ">
             <h3 style="margin:0; color:{text_color};">
-                🚦{model_choice} Predicts
+                🚦Predicted Traffic Congestion:
             </h3>
             <h1 style="margin-top:10px; color:{text_color};">
                 {pred_dict[prediction]}
@@ -126,15 +119,12 @@ def display_prediction(prediction):
 
 @st.cache_resource
 def load_model():
-    return joblib.load(f"models/{model_choice}.pkl")
+    return joblib.load(f"models/XGBoost.pkl")
     
-#predict using chosen model
-model = load_model()
-prediction = model.predict(input_df)
-
-#call display_pred
-
-display_prediction(prediction)
+if st.button("🚀 Start Prediction", use_container_width=True):
+    model = load_model()
+    prediction = model.predict(input_df)
+    display_prediction(prediction)
 
 metrics_df = pd.read_csv("https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv",
              index_col=0)
