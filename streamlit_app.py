@@ -11,7 +11,7 @@ header.stAppHeader {
     background-color: transparent;
 }
 section.stMain .block-container {
-    padding-top: 0.25rem;
+    padding-top: 0.0rem;
     z-index: 1;
 }
 </style>""", unsafe_allow_html=True)
@@ -47,28 +47,19 @@ y = train_val['Simulated Traffic Level']
 X_test = test.drop(columns=['Simulated Traffic Level', '10_Minutes_Interval'])
 y_test = test['Simulated Traffic Level']
 
-#sidebar size
+#sidebar style
 st.markdown(
     """
     <style>
         section[data-testid="stSidebar"] {
-            width: 450px
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
-#remove space - sidebar
-st.markdown("""
-<style>
-header.stAppHeader {
-    background-color: transparent;
-}
-section.stMain .block-container {
-    padding-top: 0rem;
-    z-index: 1;
-}
-</style>""", unsafe_allow_html=True)
+            width: 450px,
+        header.stAppHeader {
+            background-color: transparent;
+        }
+        section.stMain .block-container {
+        padding-top: 0rem;
+        z-index: 1;
+        </style>""",unsafe_allow_html=True)
 
 # User-defined features
 with st.sidebar:
