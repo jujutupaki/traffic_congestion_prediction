@@ -109,9 +109,6 @@ def display_prediction(prediction):
 def load_model():
     return joblib.load(f"models/XGBoost.pkl")
 
-input_df = pd.DataFrame(df_label, index=[0])
-input_df
-
 # User-defined features
 with st.sidebar:
       st.header("Please input features:")
@@ -145,6 +142,8 @@ with st.sidebar:
         'Minute': min
       }
 
+      input_df = pd.DataFrame(df_label, index=[0])
+    
       #button style
       st.markdown("""
       <style>
