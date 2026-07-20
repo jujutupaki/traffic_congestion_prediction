@@ -9,7 +9,7 @@ st.markdown(
     <style>
     /* Target the main content container and eliminate padding */
     .stAppViewBlockContainer, .block-container {
-        padding-top: 1.5rem !important;
+        padding-top: 0.5rem !important;
         padding-bottom: 1.5rem !important;
         padding-left: 1.5rem !important;
         padding-right: 1.5rem !important;
