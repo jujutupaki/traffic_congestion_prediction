@@ -11,7 +11,7 @@ header.stAppHeader {
     background-color: transparent;
 }
 section.stMain .block-container {
-    padding-top: 0.0rem;
+    padding-top: 0.5rem;
     z-index: 1;
 }
 </style>""", unsafe_allow_html=True)
@@ -57,7 +57,7 @@ st.markdown(
             background-color: transparent;
         }
         section.stMain .block-container {
-        margin-top: -1rem;
+        padding-top: 0.0rem;
         z-index: 1;
         </style>""",unsafe_allow_html=True)
 
