@@ -125,7 +125,8 @@ def load_model():
 st.markdown("""
 <style>
 div.stButton {
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 div.stButton > button {
@@ -134,8 +135,7 @@ div.stButton > button {
     border: 2px solid #d0d0d0;
     border-radius: 8px;
     padding: 0.5rem 1.5rem;
-    width: auto;
-    display: inline-block;
+    width: fit-content;
     font-weight: 600;
 }
 
