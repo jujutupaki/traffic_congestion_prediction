@@ -65,13 +65,13 @@ with st.sidebar:
       "Select date and time:",
       datetime(2025, 11, 19, 16, 40),
       step=timedelta(minutes=10))
-      temp = st.number_input("Select temperature (°C)", value=0.0)
-      soil_temp_0 = st.number_input("Select soil temperature (0-7 cm)", value=0.0)
+      temp = st.number_input("Select temperature_(°C)", value=0.0)
+      soil_temp_0 = st.number_input("Select 0-7 cm soil temperature (°C)", value=0.0)
       driving_direction = st.selectbox("Select driving direction (Backward: 0, Forward: 1)", [0, 1])
       app_temp = st.number_input("Select apparent temperature (°C)", value=0.0)
-      soil_temp_7 = st.number_input("Select soil temperature (7-28 cm)", value=0.0)
+      soil_temp_7 = st.number_input("Select 7-28 cm soil temperature (°C)", value=0.0)
       s_pressure = st.number_input("Select surface pressure (hPa)", value=0.0)
-      v_pressure = st.number_input("Select vapour pressure (kPa)", value=0.0)
+      v_pressure = st.number_input("Select vapour pressure deficit (kPa)", value=0.0)
       date = pd.to_datetime(date)
       min = date.minute
       hour = date.hour
@@ -83,16 +83,16 @@ with st.sidebar:
 
 #df for input features
 df_label = {
-    'Hour': hour,
-    'soil_temperature_0_to_7cm (°C)': soil_temp_0,
-    'temperature_2m (°C)': temp,
-    'Driving Direction': driving_direction,
-    'apparent_temperature (°C)': app_temp,
-    'soil_temperature_7_to_28cm (°C)': soil_temp_7,
-    'surface_pressure (hPa)': s_pressure,
-    'vapour_pressure_deficit (kPa)': v_pressure,
-    'DayOfYear': dayofyear,
-    'Minute': min
+    'hour': hour,
+    'dayOfYear': dayofyear,
+    'minute': min,
+    'temperature (°C)': temp,
+    '0-7 cm soil temperature (°C)': soil_temp_0,
+    'driving direction': driving_direction,
+    'apparent temperature (°C)': app_temp,
+    '7-28 cm soil temperature (°C)': soil_temp_7,
+    'surface pressure (hPa)': s_pressure,
+    'vapour pressure deficit (kPa)': v_pressure
 }
 
 input_df = pd.DataFrame(df_label, index=[0])
