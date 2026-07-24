@@ -84,7 +84,7 @@ with st.sidebar:
 #df for input features
 df_label = {
     'hour': hour,
-    'dayOfYear': dayofyear,
+    'day of year': dayofyear,
     'minute': min,
     'temperature (°C)': temp,
     '0-7 cm soil temperature (°C)': soil_temp_0,
