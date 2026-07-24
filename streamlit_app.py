@@ -65,7 +65,7 @@ with st.sidebar:
       "Select date and time:",
       datetime(2025, 11, 19, 16, 40),
       step=timedelta(minutes=10))
-      temp = st.number_input("Select temperature_(°C)", value=0.0)
+      temp = st.number_input("Select temperature (°C)", value=0.0)
       soil_temp_0 = st.number_input("Select 0-7 cm soil temperature (°C)", value=0.0)
       driving_direction = st.selectbox("Select driving direction (Backward: 0, Forward: 1)", [0, 1])
       app_temp = st.number_input("Select apparent temperature (°C)", value=0.0)
