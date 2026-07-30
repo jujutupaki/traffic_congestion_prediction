@@ -83,6 +83,8 @@ df_label = {
     'Minute': min
 }
 
+input_df = pd.DataFrame(df_label, index=[0])
+
 pred_dict = {
     0: "Low Traffic",
     1: "Moderate Traffic",
@@ -147,13 +149,26 @@ if predict_clicked:
     model = load_model()
     st.session_state.prediction = model.predict(input_df)
 
-# Always display the prediction box
-display_prediction(st.session_state.prediction)
 
-st.info("""Legends for interpretation:\n
-🟢 Minimal vehicle volume detected. Wide gaps between vehicles. Free-flowing movement.\n
-🟡 Increased vehicle volume detected. Average and steady moving traffic. Minor speed reductions.\n
-🔴 Peak vehicle volume detected. Dense clustering of vehicles. Delayed traffic speed
+# Prediction and legends
+col1, col2 = st.columns(2)
+
+with col1:
+    # Prediction box is always displayed
+    # Shows "No Prediction Yet" before the user clicks Start Prediction
+    display_prediction(st.session_state.prediction)
+
+with col2:
+    st.info("""**Legends for interpretation:**
+
+🟢 **Low Traffic**  
+Minimal vehicle volume detected. Wide gaps between vehicles. Free-flowing movement.
+
+🟡 **Moderate Traffic**  
+Increased vehicle volume detected. Average and steady moving traffic. Minor speed reductions.
+
+🔴 **Heavy Traffic**  
+Peak vehicle volume detected. Dense clustering of vehicles. Delayed traffic speed.
 """)
 
 metrics_df = pd.read_csv("https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv",
