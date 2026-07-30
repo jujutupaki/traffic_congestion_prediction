@@ -162,15 +162,15 @@ with col1:
     # Shows "No Prediction Yet" before the user clicks Start Prediction
     display_prediction(st.session_state.prediction)
     with st.expander("Chosen features: ", expanded=True):
-        st.write(f"""**Date and Time:** {date}
-    ○ Corresponding Minute: {min}
-    ○ Corresponding Hour: {hour}
-    ○ Corresponding Day of Year: {dayofyear}
-**Temperature:** {temp}
-**0-7 cm Soil Temperature:** {soil_temp_0}
-**Apparent Temperature:** {app_temp}
-**7-28 Soil Temperature:** {soil_temp_7}
-**Surface Pressure:** {s_pressure}
+        st.write(f"""**Date and Time:** {date}\n
+    ○ Corresponding Minute: {min}\n
+    ○ Corresponding Hour: {hour}\n
+    ○ Corresponding Day of Year: {dayofyear}\n
+**Temperature:** {temp}\n
+**0-7 cm Soil Temperature:** {soil_temp_0}\n
+**Apparent Temperature:** {app_temp}\n
+**7-28 Soil Temperature:** {soil_temp_7}\n
+**Surface Pressure:** {s_pressure}\n
 **Vapour Pressure:** {v_pressure}
     """)
 
