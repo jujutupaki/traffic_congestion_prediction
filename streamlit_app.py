@@ -12,7 +12,9 @@ st.set_page_config(
     page_icon="🚗"
 )
 
-st.title('🚗 Traffic Congestion Prediction')
+st.title('🚗 Traffic Congestion Prediction in Harrison Road, Baguio City')
+
+st.divider('This is a divider...')
 
 #CV SPlit
 dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
