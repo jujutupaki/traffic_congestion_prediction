@@ -312,10 +312,11 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 with col1:
-    st.subheader("Cochran's Q Test")
-    st.metric("Statistic", "22.3586", border=True)
-    st.metric("p-value", "<0.001", border=True)
-    st.metric("Decision", "Significant", border=True)
+    with st.container(border=True):
+        st.subheader("Cochran's Q Test")
+        st.metric("Statistic", "22.3586", border=True)
+        st.metric("p-value", "<0.001", border=True)
+        st.metric("Decision", "Significant", border=True)
 
 
 def significant(p_value):
