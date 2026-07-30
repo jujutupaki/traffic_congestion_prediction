@@ -200,7 +200,7 @@ st.header("Final Dataset Features & Ranking:", divider="gray")
 final_features_df = pd.read_csv(
     "https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/final_features.csv")
 
-fig = px.bar(
+features_fig = px.bar(
     final_features_df,
     x="Mean Boarda Score",
     y="Features",
@@ -209,13 +209,13 @@ fig = px.bar(
     title="Feature Importance Based on Mean Borda Score"
 )
 
-fig.update_layout(
+features_fig.update_layout(
     xaxis_title="Mean Borda Score",
     yaxis_title="Features",
     yaxis={"categoryorder": "total ascending"}
 )
 
-fig.show()
+st.plotly_chart(features_fig)
 
 
 st.header("Model Evaluation using Classification Metrics:", divider="gray")
@@ -268,7 +268,7 @@ with col2:
         ).rename(columns={id_col: "Model"})
     
         # Create grouped bar chart
-        fig = px.bar(
+        metrics_fig = px.bar(
             plot_df,
             x="Metric",
             y="Score",
@@ -278,7 +278,7 @@ with col2:
             title="Model Comparison",
         )
     
-        fig.update_layout(
+        metrics_fig.update_layout(
         yaxis=dict(
             range=[0, 0.82],
             tickmode="array",
@@ -286,7 +286,7 @@ with col2:
             )
         )
     
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(metrics_fig, use_container_width=True)
     
     else:
         st.warning("Please select at least one model and one metric.")
