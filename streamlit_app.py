@@ -93,7 +93,7 @@ pred_dict = {
     2: "Heavy Traffic"
 }
 
-#markdown for st.info legends
+#prediction
 def display_prediction(prediction):
     # No prediction yet
     if prediction is None:
@@ -102,7 +102,7 @@ def display_prediction(prediction):
         prediction_text = "No Prediction Yet"
 
     else:
-        # get predicted class
+        # Get predicted class
         prediction = int(prediction[0])
 
         if prediction == 0:
@@ -120,7 +120,8 @@ def display_prediction(prediction):
 
         prediction_text = pred_dict[prediction]
 
-        st.markdown(
+    # Display prediction box regardless of prediction status
+    st.markdown(
         f"""
         <div style="
             background-color:{bg_color};
@@ -131,10 +132,19 @@ def display_prediction(prediction):
             margin-bottom:30px;
             height:100%;
         ">
-            <h3 style="margin:0; color:{text_color}; font-size:1.1rem;">
+            <h3 style="
+                margin:0;
+                color:{text_color};
+                font-size:1.1rem;
+            ">
                 🚦 Predicted Traffic Congestion:
             </h3>
-            <h1 style="margin-top:10px; color:{text_color}; font-size:1.9rem;">
+
+            <h1 style="
+                margin-top:10px;
+                color:{text_color};
+                font-size:1.9rem;
+            ">
                 {prediction_text}
             </h1>
         </div>
