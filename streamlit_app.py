@@ -15,6 +15,8 @@ st.set_page_config(
 
 st.title('🚗 Traffic Congestion Prediction for Harrison Road, Baguio City')
 
+st.divider()
+
 #CV SPlit
 dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
 train_val = dataset_df[(dataset_df['10_Minutes_Interval'] >= pd.Timestamp('2025-01-01 00:00:00')) & (dataset_df['10_Minutes_Interval'] <= '2025-11-23 11:50:00')].reset_index(drop=True)
@@ -161,6 +163,7 @@ col1, col2 = st.columns(2)
 with col1:
     # Prediction box is always displayed
     # Shows "No Prediction Yet" before the user clicks Start Prediction
+    st.caption("Predict with, Evaluate, and Understand ML Models trained on Weather & Traffic Data")
     display_prediction(st.session_state.prediction)
     st.write("Start by selecting features in the sidebar. Then, click the 'Start Prediction' button to run the model.")
     with st.expander("CLICK TO VIEW CHOSEN FEATURES: "):
@@ -177,9 +180,7 @@ with col1:
     """)
         
 with col2:
-    st.info("""**Further Interpretation:**
-
-🟢 **Low:**  
+    st.info("""🟢 **Low:**  
 Minimal vehicle volume detected  
 Wide gaps between vehicles  
 Free-flowing movement  
