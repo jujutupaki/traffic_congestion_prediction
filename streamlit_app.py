@@ -13,7 +13,7 @@ st.set_page_config(
 )
 
 st.title('🚗 Traffic Congestion Prediction in Harrison Road, Baguio City')
-st.write("Lorem ipsum lorem ipsum sobrang latina")
+st.write("Getting started: ")
 st.divider()
 
 #CV SPlit
@@ -159,6 +159,8 @@ with col1:
     # Prediction box is always displayed
     # Shows "No Prediction Yet" before the user clicks Start Prediction
     display_prediction(st.session_state.prediction)
+    with st.expander("Click to view chosen features: "):
+        st.write("")
 
 with col2:
     st.info("""**Legends for interpretation:**
