@@ -121,6 +121,7 @@ def display_prediction(prediction):
 
     st.markdown(
         f"""
+        f"""
         <div style="
             background-color:{bg_color};
             min-height:150px;
@@ -135,20 +136,10 @@ def display_prediction(prediction):
             justify-content:center;
             align-items:center;
         ">
-            <h3 style="
-                margin:0;
-                color:{text_color};
-                font-size:16px;
-            ">
+            <h3 style="margin:0; color:{text_color}; font-size:1.1rem;">
                 🚦 Predicted Traffic Congestion:
             </h3>
-        
-            <h1 style="
-                margin-top:10px;
-                margin-bottom:0;
-                color:{text_color};
-                font-size:24px;
-            ">
+            <h1 style="margin-top:10px; color:{text_color}; font-size:1.9rem;">
                 {prediction_text}
             </h1>
         </div>
