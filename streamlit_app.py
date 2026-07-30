@@ -8,14 +8,14 @@ import plotly.express as px
 dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Traffic_Data_Selected_Features.csv')
 
 st.set_page_config(
-    page_title="Traffic Congestion Prediction",
+    page_title="BRR Traffic Congestion Prediction",
     page_icon="🚗",
     layout="wide"
 )
 
 st.set_page_config(layout="wide")
 
-st.title('🚗 Traffic Congestion Prediction')
+st.title('🚗 Traffic Congestion Prediction in Harrison-Gov Pack Rd (Baguio City)')
 
 st.info("""Welcome to **brr-traffic.streamlit.app**, the interactive dashboard for our thesis: \n
 "Predicting Traffic Congestion under Different Weather Conditions Using Machine Learning Approaches"
@@ -104,9 +104,9 @@ Your current input for features:""")
 input_df
 
 pred_dict = {
-    0: "Low Traffic",
-    1: "Moderate Traffic",
-    2: "Heavy Traffic"
+    0: "Low Traffic Congestion",
+    1: "Moderate Traffic Congestion",
+    2: "Heavy Traffic Congestion"
 }
 
 def display_prediction(prediction):
