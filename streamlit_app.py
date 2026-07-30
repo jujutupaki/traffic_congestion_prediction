@@ -195,7 +195,21 @@ Dense clustering of vehicles
 Delayed traffic speed
 """)
 
-st.header("Final Dataset Features:", divider="gray")
+st.header("Final Dataset Features & Ranking:", divider="gray")
+
+final_features_df = pd.read_csv("https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/final_features.csv",
+             index_col=0)
+fig = px.bar(
+    final_features_df.sort_values("Mean Borda Score"),
+    x="Mean Borda Score",
+    y="Features",
+    orientation="h",
+    hover_data=["Votes", "Rank Spread"],
+    title="Feature Importance by Mean Borda Score"
+)
+
+st.plotly_chart(fig, use_container_width=True)
+
 
 st.header("Model Evaluation using Classification Metrics:", divider="gray")
 
@@ -270,3 +284,4 @@ with col2:
     else:
         st.warning("Please select at least one model and one metric.")
 st.divider()
+
