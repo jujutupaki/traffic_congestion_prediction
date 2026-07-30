@@ -156,13 +156,13 @@ if predict_clicked:
     model = load_model()
     st.session_state.prediction = model.predict(input_df)
 
+st.write("""Getting started:\n
+Select input features by entering them on the sidebar. Click the "Start Prediction" button to run the prediction below. """)
 
 # Prediction and legends
 col1, col2 = st.columns(2)
 
 with col1:
-    st.write("""Getting started:\n
-Select input features by entering them on the sidebar. Click the "Start Prediction" button to run the prediction below. """)
     # Prediction box is always displayed
     # Shows "No Prediction Yet" before the user clicks Start Prediction
     display_prediction(st.session_state.prediction)
