@@ -93,101 +93,54 @@ pred_dict = {
     2: "Heavy Traffic"
 }
 
+#markdown for st.info legends
 def display_prediction(prediction):
     # No prediction yet
     if prediction is None:
-        bg_color = "#e9ecef"
-        text_color = "#6c757d"
+        bg_color = "#e9ecef"      # Light gray
+        text_color = "#6c757d"    # Dark gray
         prediction_text = "No Prediction Yet"
 
     else:
-        # Get predicted class
+        # get predicted class
         prediction = int(prediction[0])
 
         if prediction == 0:
-            bg_color = "#d4edda"
-            text_color = "#155724"
+            bg_color = "#d4edda"      # Light green
+            text_color = "#155724"    # Dark green
         elif prediction == 1:
-            bg_color = "#fff3cd"
-            text_color = "#856404"
+            bg_color = "#fff3cd"      # Light yellow
+            text_color = "#856404"    # Dark yellow
         elif prediction == 2:
-            bg_color = "#f8d7da"
-            text_color = "#721c24"
+            bg_color = "#f8d7da"      # Light red
+            text_color = "#721c24"    # Dark red
         else:
             bg_color = "#e9ecef"
             text_color = "#6c757d"
 
         prediction_text = pred_dict[prediction]
 
-#markdown for pred div
-    st.markdown(
+        st.markdown(
         f"""
         <div style="
             background-color:{bg_color};
-            height:220px;
-            padding:20px;
+            padding:20px 15px;
             border-radius:12px;
             text-align:center;
             border:2px solid {text_color};
-            box-sizing:border-box;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            margin:0 0 30px 0;
+            margin-bottom:30px;
+            height:100%;
         ">
-            <h3 style="
-                margin:0;
-                color:{text_color};
-                font-size:18px;
-            ">
+            <h3 style="margin:0; color:{text_color}; font-size:1.1rem;">
                 🚦 Predicted Traffic Congestion:
             </h3>
-
-            <h1 style="
-                margin:10px 0 0 0;
-                color:{text_color};
-                font-size:28px;
-            ">
+            <h1 style="margin-top:10px; color:{text_color}; font-size:1.9rem;">
                 {prediction_text}
             </h1>
         </div>
         """,
         unsafe_allow_html=True
     )
-
-#markdown for st.info legends
-st.markdown("""
-<style>
-
-/* Button styling */
-div[data-testid="stButton"] > button {
-    background-color: white !important;
-    color: black !important;
-    border: 2px solid #d0d0d0 !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-}
-
-div[data-testid="stButton"] > button:hover {
-    background-color: #f5f5f5 !important;
-    border-color: #999999 !important;
-    color: black !important;
-}
-
-div[data-testid="stButton"] > button:focus {
-    box-shadow: none !important;
-}
-
-/* Make the legend st.info box fixed height */
-div[data-testid="stAlert"] {
-    height: 220px !important;
-    box-sizing: border-box !important;
-    margin: 0 0 30px 0 !important;
-}
-
-</style>
-""", unsafe_allow_html=True)
 
 #connecting trained model
 @st.cache_resource
