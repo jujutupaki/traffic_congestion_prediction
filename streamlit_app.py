@@ -127,7 +127,7 @@ def display_prediction(prediction):
             border-radius:12px;
             text-align:center;
             border:2px solid {text_color};
-            margin-bottom:0.5px;
+            margin-bottom:10px;
         ">
             <h3 style="margin:0; color:{text_color};">
                 🚦 Predicted Traffic Congestion:
