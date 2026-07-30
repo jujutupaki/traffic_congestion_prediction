@@ -162,7 +162,7 @@ with col1:
     # Prediction box is always displayed
     # Shows "No Prediction Yet" before the user clicks Start Prediction
     display_prediction(st.session_state.prediction)
-    st.write("Start by selecting features in the sidebar. Then, click the "Start Prediction" button to run the model.")
+    st.write("Start by selecting features in the sidebar. Then, click the 'Start Prediction' button to run the model.")
     with st.expander("CLICK TO VIEW CHOSEN FEATURES: "):
         st.write(f"""**Date and Time:** {date}\n
     ○ Corresponding Minute: {min}\n
@@ -194,6 +194,8 @@ Peak vehicle volume detected
 Dense clustering of vehicles  
 Delayed traffic speed
 """)
+
+st.header("Final Dataset Features:", divider="gray")
 
 st.header("Model Evaluation using Classification Metrics:", divider="gray")
 
