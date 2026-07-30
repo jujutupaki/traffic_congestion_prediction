@@ -15,7 +15,7 @@ st.set_page_config(
 
 st.set_page_config(layout="wide")
 
-st.title('🚗 Traffic Congestion Prediction in Harrison-Gov Pack Rd (Baguio City)')
+st.title('🚗 Traffic Congestion Prediction in Harrison Rd (Baguio City)')
 
 st.info("""Welcome to **brr-traffic.streamlit.app**, the interactive dashboard for our thesis: \n
 "Predicting Traffic Congestion under Different Weather Conditions Using Machine Learning Approaches"
