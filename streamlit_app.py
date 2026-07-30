@@ -197,21 +197,19 @@ Delayed traffic speed
 
 st.header("Final Dataset Features & Ranking:", divider="gray")
 
-final_features_df = pd.read_csv("https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/final_features.csv",
-             index_col=0)
-
 fig = px.bar(
     final_features_df,
     x="Mean Boarda Score",
     y="Features",
     orientation="h",
     hover_data=["Votes", "Rank Spread"],
+    title="Feature Importance Based on Mean Borda Score"
 )
 
 fig.update_layout(
-    title="Feature Importance Based on Mean Borda Score",
     xaxis_title="Mean Borda Score",
     yaxis_title="Features",
+    yaxis={"categoryorder": "total ascending"}
 )
 
 fig.show()
