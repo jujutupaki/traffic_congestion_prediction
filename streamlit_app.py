@@ -317,7 +317,8 @@ with col1:
     st.metric("p-value","<0.001", border=True)
     st.metric("Decision","Significant", border=True)
 
-st.markdown("""
+with col2:
+    st.markdown("""
     <style>
     [data-testid="stMetricLabel"] {
         font-size: 15px;
@@ -327,7 +328,6 @@ st.markdown("""
     }
     </style>
     """, unsafe_allow_html=True)
-
-with col2:
+    
     st.subheader ("Pairwise McNemar's with Bonferroni Correction")
     st.metric("New p-value with Bonferroni Correction", "0.0167")
