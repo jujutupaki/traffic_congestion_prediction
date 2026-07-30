@@ -291,6 +291,8 @@ with col2:
     
     else:
         st.warning("Please select at least one model and one metric.")
+
+st.write("")
         
 st.header("Model Evaluation using Statistical Tools:", divider="gray")
 
