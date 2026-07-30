@@ -318,9 +318,9 @@ with col1:
     st.metric("Decision", "Significant", border=True)
 
 
-def significant():
+def significant(p_value):
     st.markdown(
-        """
+        f"""
         <div style="
             background-color: #d4edda;
             padding: 15px;
@@ -331,7 +331,7 @@ def significant():
                 Significant
             </div>
             <div style="color: #155724; font-size: 28px; font-weight: bold;">
-                0.0007
+                {p_value}
             </div>
         </div>
         """,
@@ -339,9 +339,9 @@ def significant():
     )
 
 
-def insignificant():
+def insignificant(p_value):
     st.markdown(
-        """
+        f"""
         <div style="
             background-color: #f8d7da;
             padding: 15px;
@@ -352,7 +352,7 @@ def insignificant():
                 Not Significant
             </div>
             <div style="color: #721c24; font-size: 28px; font-weight: bold;">
-                0.1814
+                {p_value}
             </div>
         </div>
         """,
@@ -379,6 +379,7 @@ xgb_lstm_df = pd.DataFrame({
 
 with col2:
     st.subheader("Pairwise McNemar's with Bonferroni Correction")
+
     cola, colb = st.columns([1, 3])
 
     with cola:
@@ -398,9 +399,18 @@ with col2:
 
         # Random Forest vs XGBoost
         if rf_xgb:
-            significant()
+            significant("0.0007")
+
+        # Random Forest vs LSTM
+        if rf_lstm:
+            insignificant("0.1814")
+
+        # XGBoost vs LSTM
+        if xgb_lstm:
+            significant("<0.0001")
 
     with colb:
+
         # Random Forest vs XGBoost
         if rf_xgb:
             fig = px.bar(
@@ -426,3 +436,54 @@ with col2:
                 use_container_width=True
             )
 
+
+        # Random Forest vs LSTM
+        if rf_lstm:
+            fig = px.bar(
+                rf_lstm_df,
+                x="Model",
+                y="Model Advantage",
+                text="Model Advantage",
+                title="Random Forest vs LSTM"
+            )
+
+            fig.update_traces(
+                textposition="outside"
+            )
+
+            fig.update_layout(
+                yaxis_title="Model Advantage",
+                xaxis_title="Model",
+                yaxis=dict(range=[0, 210])
+            )
+
+            st.plotly_chart(
+                fig,
+                use_container_width=True
+            )
+
+
+        # XGBoost vs LSTM
+        if xgb_lstm:
+            fig = px.bar(
+                xgb_lstm_df,
+                x="Model",
+                y="Model Advantage",
+                text="Model Advantage",
+                title="XGBoost vs LSTM"
+            )
+
+            fig.update_traces(
+                textposition="outside"
+            )
+
+            fig.update_layout(
+                yaxis_title="Model Advantage",
+                xaxis_title="Model",
+                yaxis=dict(range=[0, 210])
+            )
+
+            st.plotly_chart(
+                fig,
+                use_container_width=True
+            )
