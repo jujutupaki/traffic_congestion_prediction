@@ -179,18 +179,18 @@ with col2:
     st.info("""**Legends for interpretation:**
 
 🟢 **Low Traffic**  
-Minimal vehicle volume detected.
-Wide gaps between vehicles.
-Free-flowing movement.
+Minimal vehicle volume detected.  
+Wide gaps between vehicles.  
+Free-flowing movement.  
 
 🟡 **Moderate Traffic**  
-Increased vehicle volume detected.
-Average and steady moving traffic.
-Minor speed reductions.
+Increased vehicle volume detected.  
+Average and steady moving traffic.  
+Minor speed reductions.  
 
 🔴 **Heavy Traffic**  
-Peak vehicle volume detected.
-Dense clustering of vehicles.
+Peak vehicle volume detected.  
+Dense clustering of vehicles.  
 Delayed traffic speed.
 """)
 
