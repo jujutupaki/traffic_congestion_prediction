@@ -172,7 +172,7 @@ def display_prediction(prediction):
             <h3 style="margin:0; color:{text_color}; font-size:1.1rem;">
                 🚦 Predicted Traffic Congestion:
             </h3>
-            <h1 style="margin-top:10px; color:{text_color}; font-size:1.6rem;">
+            <h1 style="margin-top:10px; color:{text_color}; font-size:1.9rem;">
                 {prediction_text}
             </h1>
         </div>
