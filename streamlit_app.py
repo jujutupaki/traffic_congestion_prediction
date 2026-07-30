@@ -198,9 +198,7 @@ Delayed traffic speed
 st.header("Final Dataset Features & Ranking:", divider="gray")
 
 final_features_df = pd.read_csv(
-    "https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/final_features.csv",
-    index_col=0
-)
+    "https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/final_features.csv")
 
 fig = px.bar(
     final_features_df,
