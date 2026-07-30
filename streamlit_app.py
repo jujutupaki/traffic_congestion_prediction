@@ -196,7 +196,6 @@ Dense clustering of vehicles
 Delayed traffic speed
 """)
 
-st.html("<hr style='border: none; border-top: 1px solid gray; margin-bottom: 5px;'>")
 st.header("Final Dataset Features & Ranking:", divider="gray")
 
 final_features_df = pd.read_csv(
@@ -221,7 +220,6 @@ features_fig.update_layout(
 
 st.plotly_chart(features_fig)
 
-st.html("<hr style='border: none; border-top: 1px solid gray; margin-bottom: 5px;'>")
 st.header("Model Evaluation using Classification Metrics:", divider="gray")
 
 metrics_df = pd.read_csv("https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv",
@@ -295,7 +293,6 @@ with col2:
     else:
         st.warning("Please select at least one model and one metric.")
         
-st.html("<hr style='border: none; border-top: 1px solid gray; margin-bottom: 5px;'>")
 st.header("Model Evaluation using Statistical Tools:", divider="gray")
 
 st.subheader ("Cochran's Q Test")
