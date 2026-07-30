@@ -275,7 +275,7 @@ with col2:
             x="Metric",
             y="Score",
             color="Model",
-            color_continuous_scale="RdYlGn",
+            color_discrete_sequence="RdYlGn",
             barmode="group",
             text_auto=".3f",
             title="Model Comparison",
