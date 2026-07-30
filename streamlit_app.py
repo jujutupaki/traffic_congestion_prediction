@@ -276,7 +276,7 @@ with col2:
             y="Score",
             color="Model",
              color_discrete_sequence=[
-                "#d4edda"",  # Dark green
+                "#d4edda",  # Dark green
                 "#fff3cd",  # Yellow/orange
                 "#f8d7da",  # Dark red
             ],
