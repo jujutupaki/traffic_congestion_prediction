@@ -300,6 +300,17 @@ st.header("Model Evaluation using Statistical Tools:", divider="gray")
 
 col1, col2 = st.columns([1,3.5])
 
+st.markdown("""
+    <style>
+    [data-testid="stMetricLabel"] {
+        font-size: 20px;
+    }
+    [data-testid="stMetricValue"] {
+        font-size: 50px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 with col1:
     st.subheader ("Cochran's Q Test")
     st.metric("Statistic","22.3586",border=True)
