@@ -162,7 +162,7 @@ with col1:
     # Prediction box is always displayed
     # Shows "No Prediction Yet" before the user clicks Start Prediction
     display_prediction(st.session_state.prediction)
-    st.write("Start by selecting features in the sidebar. Then, click the button to run the prediction above.")
+    st.write("Start by selecting features in the sidebar. Then, click the "Start Prediction" button to run the model.")
     with st.expander("CLICK TO VIEW CHOSEN FEATURES: "):
         st.write(f"""**Date and Time:** {date}\n
     ○ Corresponding Minute: {min}\n
