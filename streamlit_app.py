@@ -176,19 +176,22 @@ with col1:
     """)
         
 with col2:
-    st.info("""**Legends for interpretation:**
+    st.info("""**Further Interpretation:**
 
-🟢 Minimal vehicle volume detected  
-    Wide gaps between vehicles  
-    Free-flowing movement  
+🟢 **Low**:
+Minimal vehicle volume detected  
+Wide gaps between vehicles  
+Free-flowing movement  
 
-🟡 Increased vehicle volume detected  
-    Average and steady moving traffic  
-    Minor speed reductions  
+🟡 **Moderate**
+Increased vehicle volume detected  
+Average and steady moving traffic  
+Minor speed reductions  
 
-🔴 Peak vehicle volume detected  
-    Dense clustering of vehicles  
-    Delayed traffic speed
+🔴 **Heavy**
+Peak vehicle volume detected  
+Dense clustering of vehicles  
+Delayed traffic speed
 """)
 
 st.divider()
