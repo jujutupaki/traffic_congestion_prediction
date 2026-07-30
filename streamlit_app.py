@@ -161,19 +161,19 @@ with col1:
     # Prediction box is always displayed
     # Shows "No Prediction Yet" before the user clicks Start Prediction
     display_prediction(st.session_state.prediction)
-    with st.expander("Chosen features: ", expanded=True):
+    with st.expander("CLICK TO VIEW CHOSEN FEATURES: "):
         st.write(f"""**Date and Time:** {date}\n
     ○ Corresponding Minute: {min}\n
     ○ Corresponding Hour: {hour}\n
     ○ Corresponding Day of Year: {dayofyear}\n
-**Temperature:** {temp}\n
-**0-7 cm Soil Temperature:** {soil_temp_0}\n
-**Apparent Temperature:** {app_temp}\n
-**7-28 Soil Temperature:** {soil_temp_7}\n
-**Surface Pressure:** {s_pressure}\n
-**Vapour Pressure:** {v_pressure}
+**Temperature:** {temp} °C)\n
+**0-7 cm Soil Temperature:** {soil_temp_0} °C)\n
+**Apparent Temperature:** {app_temp} °C)\n
+**7-28 Soil Temperature:** {soil_temp_7} °C)\n
+**Surface Pressure:** {s_pressure} hPa\n
+**Vapour Pressure:** {v_pressure} kPa
     """)
-
+        
 with col2:
     st.info("""**Legends for interpretation:**
 
@@ -186,6 +186,8 @@ Increased vehicle volume detected. Average and steady moving traffic. Minor spee
 🔴 **Heavy Traffic**  
 Peak vehicle volume detected. Dense clustering of vehicles. Delayed traffic speed.
 """)
+
+st.divider()
 
 metrics_df = pd.read_csv("https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv",
              index_col=0)
