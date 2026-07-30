@@ -318,159 +318,154 @@ with col1:
     st.metric("Decision","Significant", border=True)
 
 with col2:
-    st.subheader ("Pairwise McNemar's with Bonferroni Correction")
+    st.subheader("Pairwise McNemar's with Bonferroni Correction")
     st.info("Select a pairwise comparison:")
+    
     rf_xgb = st.checkbox("Random Forest & XGBoost")
     rf_lstm = st.checkbox("Random Forest & LSTM")
-
-st.subheader("Pairwise McNemar's with Bonferroni Correction")
-st.info("Select a pairwise comparison:")
-
-rf_xgb = st.checkbox("Random Forest & XGBoost")
-rf_lstm = st.checkbox("Random Forest & LSTM")
-xgb_lstm = st.checkbox("XGBoost & LSTM")
-
-# Create DataFrames for each pair
-rf_xgb_df = pd.DataFrame({
-    "Model": ["Random Forest", "XGBoost"],
-    "Model Advantage": [91, 144]
-})
-
-rf_lstm_df = pd.DataFrame({
-    "Model": ["Random Forest", "LSTM"],
-    "Model Advantage": [188, 162]
-})
-
-xgb_lstm_df = pd.DataFrame({
-    "Model": ["XGBoost", "LSTM"],
-    "Model Advantage": [182, 103]
-})
-
-# Random Forest vs XGBoost
-if rf_xgb:
-    st.write("### Random Forest vs XGBoost")
-
-    fig = px.bar(
-        rf_xgb_df,
-        x="Model",
-        y="Model Advantage",
-        text="Model Advantage",
-        title="Random Forest vs XGBoost"
-    )
-
-    fig.update_traces(
-        textposition="outside"
-    )
-
-    fig.update_layout(
-        yaxis_title="Model Advantage",
-        xaxis_title="Model",
-        yaxis=dict(range=[0, 160])
-    )
-
-    st.plotly_chart(fig, use_container_width=True)
-
-    st.markdown(
+    xgb_lstm = st.checkbox("XGBoost & LSTM")
+    
+    # Create DataFrames for each pair
+    rf_xgb_df = pd.DataFrame({
+        "Model": ["Random Forest", "XGBoost"],
+        "Model Advantage": [91, 144]
+    })
+    
+    rf_lstm_df = pd.DataFrame({
+        "Model": ["Random Forest", "LSTM"],
+        "Model Advantage": [188, 162]
+    })
+    
+    xgb_lstm_df = pd.DataFrame({
+        "Model": ["XGBoost", "LSTM"],
+        "Model Advantage": [182, 103]
+    })
+    
+    # Random Forest vs XGBoost
+    if rf_xgb:
+        st.write("### Random Forest vs XGBoost")
+    
+        fig = px.bar(
+            rf_xgb_df,
+            x="Model",
+            y="Model Advantage",
+            text="Model Advantage",
+            title="Random Forest vs XGBoost"
+        )
+    
+        fig.update_traces(
+            textposition="outside"
+        )
+    
+        fig.update_layout(
+            yaxis_title="Model Advantage",
+            xaxis_title="Model",
+            yaxis=dict(range=[0, 160])
+        )
+    
+        st.plotly_chart(fig, use_container_width=True)
+    
+        st.markdown(
+            """
+            <div style="
+                background-color: #d4edda;
+                padding: 15px;
+                border-radius: 10px;
+                border: 1px solid #c3e6cb;
+            ">
+                <div style="color: #155724; font-size: 16px; font-weight: bold;">
+                    Significant
+                </div>
+                <div style="color: #155724; font-size: 28px; font-weight: bold;">
+                    0.0007
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+    
+    # Random Forest vs LSTM
+    if rf_lstm:
+        st.write("### Random Forest vs LSTM")
+    
+        fig = px.bar(
+            rf_lstm_df,
+            x="Model",
+            y="Model Advantage",
+            text="Model Advantage",
+            title="Random Forest vs LSTM"
+        )
+    
+        fig.update_traces(
+            textposition="outside"
+        )
+    
+        fig.update_layout(
+            yaxis_title="Model Advantage",
+            xaxis_title="Model",
+            yaxis=dict(range=[0, 210])
+        )
+    
+        st.plotly_chart(fig, use_container_width=True)
+    
+        st.markdown(
         """
         <div style="
-            background-color: #d4edda;
+            background-color: #f8d7da;
             padding: 15px;
             border-radius: 10px;
-            border: 1px solid #c3e6cb;
+            border: 1px solid #f5c2c7;
         ">
-            <div style="color: #155724; font-size: 16px; font-weight: bold;">
-                Significant
+            <div style="color: #721c24; font-size: 16px; font-weight: bold;">
+                Not Significant
             </div>
-            <div style="color: #155724; font-size: 28px; font-weight: bold;">
-                0.0007
+            <div style="color: #721c24; font-size: 28px; font-weight: bold;">
+                0.1814
             </div>
         </div>
         """,
         unsafe_allow_html=True
-    )
-
-# Random Forest vs LSTM
-if rf_lstm:
-    st.write("### Random Forest vs LSTM")
-
-    fig = px.bar(
-        rf_lstm_df,
-        x="Model",
-        y="Model Advantage",
-        text="Model Advantage",
-        title="Random Forest vs LSTM"
-    )
-
-    fig.update_traces(
-        textposition="outside"
-    )
-
-    fig.update_layout(
-        yaxis_title="Model Advantage",
-        xaxis_title="Model",
-        yaxis=dict(range=[0, 210])
-    )
-
-    st.plotly_chart(fig, use_container_width=True)
-
-    st.markdown(
-    """
-    <div style="
-        background-color: #f8d7da;
-        padding: 15px;
-        border-radius: 10px;
-        border: 1px solid #f5c2c7;
-    ">
-        <div style="color: #721c24; font-size: 16px; font-weight: bold;">
-            Not Significant
-        </div>
-        <div style="color: #721c24; font-size: 28px; font-weight: bold;">
-            0.1814
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True
-    )
-
-# XGBoost vs LSTM
-if xgb_lstm:
-    st.write("### XGBoost vs LSTM")
-
-    fig = px.bar(
-        xgb_lstm_df,
-        x="Model",
-        y="Model Advantage",
-        color="Model",
-        text="Model Advantage",
-        title="XGBoost vs LSTM"
-    )
-
-    fig.update_traces(
-        textposition="outside"
-    )
-
-    fig.update_layout(
-        yaxis_title="Model Advantage",
-        xaxis_title="Model",
-        yaxis=dict(range=[0, 210])
-    )
-
-    st.plotly_chart(fig, use_container_width=True)
-
-    st.markdown(
-        """
-        <div style="
-            background-color: #d4edda;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid #c3e6cb;
-        ">
-            <div style="color: #155724; font-size: 16px; font-weight: bold;">
-                Significant
-            </div>
-            <div style="color: #155724; font-size: 28px; font-weight: bold;">
-                0.0007
-            </div>
+        )
+    
+    # XGBoost vs LSTM
+    if xgb_lstm:
+        st.write("### XGBoost vs LSTM")
+    
+        fig = px.bar(
+            xgb_lstm_df,
+            x="Model",
+            y="Model Advantage",
+            color="Model",
+            text="Model Advantage",
+            title="XGBoost vs LSTM"
+        )
+    
+        fig.update_traces(
+            textposition="outside"
+        )
+    
+        fig.update_layout(
+            yaxis_title="Model Advantage",
+            xaxis_title="Model",
+            yaxis=dict(range=[0, 210])
+        )
+    
+        st.plotly_chart(fig, use_container_width=True)
+    
+        st.markdown(
+            """
+            <div style="
+                background-color: #d4edda;
+                padding: 15px;
+                border-radius: 10px;
+                border: 1px solid #c3e6cb;
+            ">
+                <div style="color: #155724; font-size: 16px; font-weight: bold;">
+                    Significant
+                </div>
+                <div style="color: #155724; font-size: 28px; font-weight: bold;">
+                    0.0007
+                </div>
         </div>
         """,
         unsafe_allow_html=True
