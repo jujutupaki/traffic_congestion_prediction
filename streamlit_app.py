@@ -38,37 +38,6 @@ y = train_val['Simulated Traffic Level']
 X_test = test.drop(columns=['Simulated Traffic Level', '10_Minutes_Interval'])
 y_test = test['Simulated Traffic Level']
 
-#button style
-st.markdown("""
-<style>
-section[data-testid="stSidebar"] div[data-testid="stButton"] {
-    display: flex !important;
-    justify-content: center !important;
-}
-
-div[data-testid="stButton"] > button {
-    background-color: white !important;
-    color: black !important;
-    border: 2px solid #d0d0d0 !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-    width: fit-content !important;
-    padding: 0.5rem 1.5rem !important;
-    white-space: nowrap !important;
-}
-
-div[data-testid="stButton"] > button:hover {
-    background-color: #f5f5f5 !important;
-    border-color: #999999 !important;
-    color: black !important;
-}
-
-div[data-testid="stButton"] > button:focus {
-    box-shadow: none !important;
-}
-</style>
-""", unsafe_allow_html=True)
-
 # User-defined features
 with st.sidebar:
       st.header("PLEASE INPUT FEATURES")
@@ -179,10 +148,36 @@ if predict_clicked:
 # Always display the prediction box
 display_prediction(st.session_state.prediction)
 
+st.markdown("""
+<style>
+div[data-testid="stButton"] > button {
+    background-color: white !important;
+    color: black !important;
+    border: 2px solid #d0d0d0 !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+}
+
+div[data-testid="stButton"] > button:hover {
+    background-color: #f5f5f5 !important;
+    border-color: #999999 !important;
+    color: black !important;
+}
+
+div[data-testid="stButton"] > button:focus {
+    box-shadow: none !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
 col_pred, col_legend = st.columns([1, 1.4])
 
 with col_pred:
     display_prediction(st.session_state.prediction)
+    predict_clicked = st.button(
+        "Start Prediction",
+        use_container_width=True
+    )
 
 with col_legend:
     st.info("""Legends for interpretation:\n
