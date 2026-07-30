@@ -428,7 +428,8 @@ with col2:
             fig.update_layout(
                 yaxis_title="Model Advantage",
                 xaxis_title="Model",
-                yaxis=dict(range=[0, 160])
+                yaxis=dict(range=[0, 160]),
+                margin=dict(t=10)
             )
 
             st.plotly_chart(
@@ -454,7 +455,8 @@ with col2:
             fig.update_layout(
                 yaxis_title="Model Advantage",
                 xaxis_title="Model",
-                yaxis=dict(range=[0, 210])
+                yaxis=dict(range=[0, 210]),
+                margin=dict(t=10)
             )
 
             st.plotly_chart(
@@ -480,7 +482,8 @@ with col2:
             fig.update_layout(
                 yaxis_title="Model Advantage",
                 xaxis_title="Model",
-                yaxis=dict(range=[0, 210])
+                yaxis=dict(range=[0, 210]),
+                margin=dict(t=10)
             )
 
             st.plotly_chart(
