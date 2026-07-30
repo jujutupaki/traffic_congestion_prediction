@@ -206,7 +206,7 @@ features_fig = px.bar(
     y="Features",
     orientation="h",
      color="Mean Boarda Score",
-    color_continuous_scale="Blues",
+    color_continuous_scale="RdYlGn_r",
     hover_data=["Votes", "Rank Spread"],
     title="Feature Importance Based on Mean Borda Score"
 )
