@@ -96,43 +96,59 @@ pred_dict = {
 def display_prediction(prediction):
     # No prediction yet
     if prediction is None:
-        bg_color = "#e9ecef"      # Light gray
-        text_color = "#6c757d"    # Dark gray
+        bg_color = "#e9ecef"
+        text_color = "#6c757d"
         prediction_text = "No Prediction Yet"
 
     else:
-        # get predicted class
+        # Get predicted class
         prediction = int(prediction[0])
 
         if prediction == 0:
-            bg_color = "#d4edda"      # Light green
-            text_color = "#155724"    # Dark green
+            bg_color = "#d4edda"
+            text_color = "#155724"
         elif prediction == 1:
-            bg_color = "#fff3cd"      # Light yellow
-            text_color = "#856404"    # Dark yellow
+            bg_color = "#fff3cd"
+            text_color = "#856404"
         elif prediction == 2:
-            bg_color = "#f8d7da"      # Light red
-            text_color = "#721c24"    # Dark red
+            bg_color = "#f8d7da"
+            text_color = "#721c24"
         else:
             bg_color = "#e9ecef"
             text_color = "#6c757d"
 
         prediction_text = pred_dict[prediction]
 
+#markdown for pred div
     st.markdown(
         f"""
         <div style="
-         background-color:{bg_color};
-         padding:20px;
-         border-radius:12px;
-         text-align:center;
-         border:2px solid {text_color};
-         margin:0 auto 30px auto;
-         ">
-            <h3 style="margin:0; color:{text_color};">
+            background-color:{bg_color};
+            height:220px;
+            padding:20px;
+            border-radius:12px;
+            text-align:center;
+            border:2px solid {text_color};
+            box-sizing:border-box;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            margin:0 0 30px 0;
+        ">
+            <h3 style="
+                margin:0;
+                color:{text_color};
+                font-size:18px;
+            ">
                 🚦 Predicted Traffic Congestion:
             </h3>
-            <h1 style="margin-top:10px; color:{text_color};">
+
+            <h1 style="
+                margin:10px 0 0 0;
+                color:{text_color};
+                font-size:28px;
+            ">
                 {prediction_text}
             </h1>
         </div>
@@ -140,6 +156,40 @@ def display_prediction(prediction):
         unsafe_allow_html=True
     )
 
+#markdown for st.info legends
+st.markdown("""
+<style>
+
+/* Button styling */
+div[data-testid="stButton"] > button {
+    background-color: white !important;
+    color: black !important;
+    border: 2px solid #d0d0d0 !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+}
+
+div[data-testid="stButton"] > button:hover {
+    background-color: #f5f5f5 !important;
+    border-color: #999999 !important;
+    color: black !important;
+}
+
+div[data-testid="stButton"] > button:focus {
+    box-shadow: none !important;
+}
+
+/* Make the legend st.info box fixed height */
+div[data-testid="stAlert"] {
+    height: 220px !important;
+    box-sizing: border-box !important;
+    margin: 0 0 30px 0 !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+#connecting trained model
 @st.cache_resource
 def load_model():
     return joblib.load(f"models/XGBoost.pkl")
