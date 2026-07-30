@@ -298,5 +298,13 @@ st.write("")
 
 st.header("Model Evaluation using Statistical Tools:", divider="gray")
 
-st.subheader ("Cochran's Q Test")
-st.subheader ("Pairwise McNemar's with Bonferroni's Correction")
+col1, col2 = st.columns(2)
+
+with col1:
+    st.subheader ("Cochran's Q Test")
+    st.metric("Statistic","22.3586",border=True)
+    st.metric("p-value","<0.001", border=True)
+    st.metric("Decision","Significant", border=True)
+
+with col2:
+    st.subheader ("Pairwise McNemar's with Bonferroni's Correction")
