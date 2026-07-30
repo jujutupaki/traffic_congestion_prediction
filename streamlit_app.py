@@ -275,11 +275,6 @@ with col2:
             x="Metric",
             y="Score",
             color="Model",
-             color_discrete_sequence=[
-                "#d4edda",  # Dark green
-                "#fff3cd",  # Yellow/orange
-                "#f8d7da",  # Dark red
-            ],
             barmode="group",
             text_auto=".3f",
             title="Model Comparison",
