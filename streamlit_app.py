@@ -57,10 +57,10 @@ with st.sidebar:
       datetime(2025, 11, 19, 16, 40),
       step=timedelta(minutes=10))
       temp = st.number_input("Select temperature (°C)", value=0.0)
-      soil_temp_0 = st.number_input("Select soil temperature (0-7 cm)", value=0.0)
+      soil_temp_0 = st.number_input("Select 0-7 cm soil temperature (°C)", value=0.0)
       driving_direction = st.selectbox("Select driving direction (Backward: 0, Forward: 1)", [0, 1])
       app_temp = st.number_input("Select apparent temperature (°C)", value=0.0)
-      soil_temp_7 = st.number_input("Select soil temperature (7-28 cm)", value=0.0)
+      soil_temp_7 = st.number_input("Select 7-28 cm soil temperature (°C)", value=0.0)
       s_pressure = st.number_input("Select surface pressure (hPa)", value=0.0)
       v_pressure = st.number_input("Select vapour pressure (kPa)", value=0.0)
       date = pd.to_datetime(date)
@@ -126,7 +126,7 @@ def display_prediction(prediction):
             background-color:{bg_color};
             padding:20px 15px;
             border-radius:12px;
-            text-align:left;
+            text-align:center;
             border:2px solid {text_color};
             margin-bottom:10px;
             height:100%;
@@ -162,7 +162,17 @@ with col1:
     # Shows "No Prediction Yet" before the user clicks Start Prediction
     display_prediction(st.session_state.prediction)
     with st.expander("Chosen features: ", expanded=True):
-        st.write("")
+        st.write(f"""**Date and Time:** {date}
+    ○ Corresponding Minute: {min}
+    ○ Corresponding Hour: {hour}
+    ○ Corresponding Day of Year: {dayofyear}
+**Temperature:** {temp}
+**0-7 cm Soil Temperature:** {soil_temp_0}
+**Apparent Temperature:** {app_temp}
+**7-28 Soil Temperature:** {soil_temp_7}
+**Surface Pressure:** {s_pressure}
+**Vapour Pressure:** {v_pressure}
+    """)
 
 with col2:
     st.info("""**Legends for interpretation:**
