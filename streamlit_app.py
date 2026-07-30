@@ -162,6 +162,7 @@ with col1:
     # Prediction box is always displayed
     # Shows "No Prediction Yet" before the user clicks Start Prediction
     display_prediction(st.session_state.prediction)
+    st.write("Start by selecting features in the sidebar. Click the button to run the prediction above.")
     with st.expander("CLICK TO VIEW CHOSEN FEATURES: "):
         st.write(f"""**Date and Time:** {date}\n
     ○ Corresponding Minute: {min}\n
@@ -266,3 +267,4 @@ with col2:
     
     else:
         st.warning("Please select at least one model and one metric.")
+st.divider()
