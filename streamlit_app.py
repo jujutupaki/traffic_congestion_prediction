@@ -324,30 +324,30 @@ with col2:
     rf_lstm = st.checkbox("Random Forest & LSTM")
 
 st.subheader("Pairwise McNemar's with Bonferroni Correction")
-    st.info("Select a pairwise comparison:")
+st.info("Select a pairwise comparison:")
 
-    rf_xgb = st.checkbox("Random Forest & XGBoost")
-    rf_lstm = st.checkbox("Random Forest & LSTM")
-    xgb_lstm = st.checkbox("XGBoost & LSTM")
+rf_xgb = st.checkbox("Random Forest & XGBoost")
+rf_lstm = st.checkbox("Random Forest & LSTM")
+xgb_lstm = st.checkbox("XGBoost & LSTM")
 
-    # Create DataFrames for each pair
-    rf_xgb_df = pd.DataFrame({
-        "Model": ["Random Forest", "XGBoost"],
-        "Model Advantage": [91, 144]
-    })
+# Create DataFrames for each pair
+rf_xgb_df = pd.DataFrame({
+    "Model": ["Random Forest", "XGBoost"],
+    "Model Advantage": [91, 144]
+})
 
-    rf_lstm_df = pd.DataFrame({
-        "Model": ["Random Forest", "LSTM"],
-        "Model Advantage": [188, 162]
-    })
+rf_lstm_df = pd.DataFrame({
+    "Model": ["Random Forest", "LSTM"],
+    "Model Advantage": [188, 162]
+})
 
-    xgb_lstm_df = pd.DataFrame({
-        "Model": ["XGBoost", "LSTM"],
-        "Model Advantage": [182, 103]
-    })
+xgb_lstm_df = pd.DataFrame({
+    "Model": ["XGBoost", "LSTM"],
+    "Model Advantage": [182, 103]
+})
 
-    # Random Forest vs XGBoost
-    if rf_xgb:
+# Random Forest vs XGBoost
+if rf_xgb:
         st.write("### Random Forest vs XGBoost")
 
         fig = px.bar(
@@ -390,7 +390,7 @@ st.subheader("Pairwise McNemar's with Bonferroni Correction")
             )
 
     # Random Forest vs LSTM
-    if rf_lstm:
+if rf_lstm:
         st.write("### Random Forest vs LSTM")
 
         fig = px.bar(
@@ -415,7 +415,7 @@ st.subheader("Pairwise McNemar's with Bonferroni Correction")
 
 
     # XGBoost vs LSTM
-    if xgb_lstm:
+if xgb_lstm:
         st.write("### XGBoost vs LSTM")
 
         fig = px.bar(
