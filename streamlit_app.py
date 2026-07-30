@@ -379,11 +379,10 @@ xgb_lstm_df = pd.DataFrame({
 
 with col2:
     st.subheader("Pairwise McNemar's with Bonferroni Correction")
+    st.info("Select a pairwise comparison:")
     cola, colb = st.columns([1, 3])
 
     with cola:
-        st.info("Select a pairwise comparison:")
-
         selected_pair = st.radio(
             "Pairwise comparison:",
             [
