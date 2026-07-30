@@ -306,7 +306,7 @@ st.markdown("""
         font-size: 20px;
     }
     [data-testid="stMetricValue"] {
-        font-size: 28px;
+        font-size: 23px;
     }
     </style>
     """, unsafe_allow_html=True)
