@@ -170,9 +170,9 @@ if predict_clicked:
 # Always display the prediction box
 display_prediction(st.session_state.prediction)
 
-st.info("""Legends for interpretation:
-🟢  Low vehicle volume detected. Wide gaps between vehicles. Free-flowing movement.
-🟡 Increased vehicle volume detected. Average and steady moving traffic. Minor speed reductions.
+st.info("""Legends for interpretation:\n
+🟢  Low vehicle volume detected. Wide gaps between vehicles. Free-flowing movement.\n
+🟡 Increased vehicle volume detected. Average and steady moving traffic. Minor speed reductions.\n
 🔴 Peak vehicle volume detected. Dense clustering of vehicles. Delayed traffic speed
 """)
 
