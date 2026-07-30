@@ -8,26 +8,11 @@ import plotly.express as px
 dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/Traffic_Data_Selected_Features.csv')
 
 st.set_page_config(
-    page_title="BRR Traffic Congestion Prediction",
-    page_icon="🚗",
-    layout="wide"
+    page_title="Traffic Congestion Prediction",
+    page_icon="🚗"
 )
 
-st.set_page_config(layout="wide")
-
-st.title('🚗 Traffic Congestion Prediction in Harrison Road, Baguio City')
-
-st.info("""Welcome to **brr-traffic.streamlit.app**, the interactive dashboard for our thesis: \n
-"Predicting Traffic Congestion under Different Weather Conditions Using Machine Learning Approaches"
-
-What you can explore here:\n
-🔴 **Dataset Overview:** The final traffic-weather dataset using selected features\n
-🟡 **Model Evaluation Dashboard:** Compare performance metrics across the Random Forest, XGBoost, and LSTM models\n
-🟢 **Traffic Predictor:** Input custom weather conditions, dates, and times to generate real-time congestion predictions\n""")
-
-#dataset
-with st.expander('View Final Traffic-Weather Dataset', expanded=True):
-    st.write(dataset_df.head(10))
+st.title('🚗 Traffic Congestion Prediction')
 
 #CV SPlit
 dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
@@ -58,29 +43,6 @@ div[data-testid="stButton"] > button:hover {
 div[data-testid="stButton"] > button:focus {
     box-shadow: none !important;
 }
-
-div[data-testid="column"]:has(.equal-box) {
-    display: flex !important;
-}
-
-div[data-testid="column"]:has(.equal-box) > div {
-    display: flex !important;
-    width: 100% !important;
-}
-
-.equal-box {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-}
-
-.equal-box > div[data-testid="stAlert"],
-.equal-box > div[style] {
-    flex: 1 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-}
 </style>
 """, unsafe_allow_html=True)
 
@@ -92,10 +54,10 @@ with st.sidebar:
       datetime(2025, 11, 19, 16, 40),
       step=timedelta(minutes=10))
       temp = st.number_input("Select temperature (°C)", value=0.0)
-      soil_temp_0 = st.number_input("Select 0-7 cm soil temperature (°C)", value=0.0)
+      soil_temp_0 = st.number_input("Select soil temperature (0-7 cm)", value=0.0)
       driving_direction = st.selectbox("Select driving direction (Backward: 0, Forward: 1)", [0, 1])
       app_temp = st.number_input("Select apparent temperature (°C)", value=0.0)
-      soil_temp_7 = st.number_input("Select 7-28 cm soil temperature (°C)", value=0.0)
+      soil_temp_7 = st.number_input("Select soil temperature (7-28 cm)", value=0.0)
       s_pressure = st.number_input("Select surface pressure (hPa)", value=0.0)
       v_pressure = st.number_input("Select vapour pressure (kPa)", value=0.0)
       date = pd.to_datetime(date)
@@ -121,15 +83,10 @@ df_label = {
     'Minute': min
 }
 
-input_df = pd.DataFrame(df_label, index=[0])
-st.info("""Input your chosen features and click the "Start Prediction" button!\n
-Your current input for features:""")
-input_df
-
 pred_dict = {
-    0: "Low Traffic Congestion",
-    1: "Moderate Traffic Congestion",
-    2: "Heavy Traffic Congestion"
+    0: "Low Traffic",
+    1: "Moderate Traffic",
+    2: "Heavy Traffic"
 }
 
 def display_prediction(prediction):
@@ -158,21 +115,20 @@ def display_prediction(prediction):
 
         prediction_text = pred_dict[prediction]
 
-        st.markdown(
+    st.markdown(
         f"""
         <div style="
             background-color:{bg_color};
-            padding:20px 15px;
+            padding:25px;
             border-radius:12px;
             text-align:center;
             border:2px solid {text_color};
             margin-bottom:30px;
-            height:100%;
         ">
-            <h3 style="margin:0; color:{text_color}; font-size:1.1rem;">
+            <h3 style="margin:0; color:{text_color};">
                 🚦 Predicted Traffic Congestion:
             </h3>
-            <h1 style="margin-top:10px; color:{text_color}; font-size:1.9rem;">
+            <h1 style="margin-top:10px; color:{text_color};">
                 {prediction_text}
             </h1>
         </div>
@@ -191,21 +147,14 @@ if predict_clicked:
     model = load_model()
     st.session_state.prediction = model.predict(input_df)
 
-col_pred, col_legend = st.columns([1, 1.4])
+# Always display the prediction box
+display_prediction(st.session_state.prediction)
 
-with col_pred:
-    st.markdown('<div class="equal-box">', unsafe_allow_html=True)
-    display_prediction(st.session_state.prediction)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-with col_legend:
-    st.markdown('<div class="equal-box">', unsafe_allow_html=True)
-    st.info("""Legends for interpretation:\n
+st.info("""Legends for interpretation:\n
 🟢 Minimal vehicle volume detected. Wide gaps between vehicles. Free-flowing movement.\n
 🟡 Increased vehicle volume detected. Average and steady moving traffic. Minor speed reductions.\n
 🔴 Peak vehicle volume detected. Dense clustering of vehicles. Delayed traffic speed
 """)
-    st.markdown('</div>', unsafe_allow_html=True)
 
 metrics_df = pd.read_csv("https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv",
              index_col=0)
