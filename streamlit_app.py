@@ -14,6 +14,7 @@ st.set_page_config(
 )
 
 st.title('🚗 Traffic Congestion Prediction for Harrison Road, Baguio City')
+st.caption("Predict, Evaluate, and Understand Weather-Based Traffic Congestion Prediction with ML")
 
 st.divider()
 
@@ -163,7 +164,6 @@ col1, col2 = st.columns(2)
 with col1:
     # Prediction box is always displayed
     # Shows "No Prediction Yet" before the user clicks Start Prediction
-    st.caption("Predict with, Evaluate, and Understand ML Models trained on Weather & Traffic Data")
     display_prediction(st.session_state.prediction)
     st.write("Start by selecting features in the sidebar. Then, click the 'Start Prediction' button to run the model.")
     with st.expander("CLICK TO VIEW CHOSEN FEATURES: "):
