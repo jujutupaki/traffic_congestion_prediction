@@ -275,10 +275,10 @@ with col2:
             x="Metric",
             y="Score",
             color="Model",
-            color_discrete_sequence=[
-                "#155724",  # Dark green
-                "#856404",  # Yellow/orange
-                "#721c24",  # Dark red           
+             color_discrete_sequence=[
+                "#006837",  # Dark green
+                "#FDBE6F",  # Yellow/orange
+                "#A50026",  # Dark red
             ],
             barmode="group",
             text_auto=".3f",
