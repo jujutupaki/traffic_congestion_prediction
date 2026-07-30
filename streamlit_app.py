@@ -139,7 +139,7 @@ def display_prediction(prediction):
                 🚦 Predicted Traffic Congestion:
             </h3>
             <h1 style="margin-top:10px; color:{text_color}; font-size:40px;">
-                {prediction_text}
+                "",{prediction_text}
             </h1>
         </div>
         """,
