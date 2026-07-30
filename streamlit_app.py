@@ -315,7 +315,8 @@ with col1:
     st.subheader ("Cochran's Q Test")
     st.metric("Statistic","22.3586",border=True)
     st.metric("p-value","<0.001", border=True)
-
+    st.metric("Decision","Significant", border=True)
+    
     def significant():
         st.markdown(
             """
@@ -355,110 +356,64 @@ with col1:
             """,
             unsafe_allow_html=True
         )
-    
-with col2:
-    st.subheader("Pairwise McNemar's with Bonferroni Correction")
-    st.info("Select a pairwise comparison:")
-
-    selected_pair = st.radio(
-        "Pairwise comparison:",
-        [
-            "Random Forest & XGBoost",
-            "Random Forest & LSTM",
-            "XGBoost & LSTM"
-        ]
-    )
-
-    # Keep the same Boolean logic
-    rf_xgb = selected_pair == "Random Forest & XGBoost"
-    rf_lstm = selected_pair == "Random Forest & LSTM"
-    xgb_lstm = selected_pair == "XGBoost & LSTM"
-
-    # Create DataFrames for each pair
-    rf_xgb_df = pd.DataFrame({
-        "Model": ["Random Forest", "XGBoost"],
-        "Model Advantage": [91, 144]
-    })
-
-    rf_lstm_df = pd.DataFrame({
-        "Model": ["Random Forest", "LSTM"],
-        "Model Advantage": [188, 162]
-    })
-
-    xgb_lstm_df = pd.DataFrame({
-        "Model": ["XGBoost", "LSTM"],
-        "Model Advantage": [182, 103]
-    })
-
-    # Random Forest vs XGBoost
-    if rf_xgb:
-        fig = px.bar(
-            rf_xgb_df,
-            x="Model",
-            y="Model Advantage",
-            text="Model Advantage",
-            title="Random Forest vs XGBoost"
-        )
-
-        fig.update_traces(
-            textposition="outside"
-        )
-
-        fig.update_layout(
-            yaxis_title="Model Advantage",
-            xaxis_title="Model",
-            yaxis=dict(range=[0, 160])
-        )
-
-        st.plotly_chart(fig, use_container_width=True)
-
-        significant()
-
-    # Random Forest vs LSTM
-    if rf_lstm:
-        fig = px.bar(
-            rf_lstm_df,
-            x="Model",
-            y="Model Advantage",
-            text="Model Advantage",
-            title="Random Forest vs LSTM"
-        )
-
-        fig.update_traces(
-            textposition="outside"
-        )
-
-        fig.update_layout(
-            yaxis_title="Model Advantage",
-            xaxis_title="Model",
-            yaxis=dict(range=[0, 210])
-        )
-
-        st.plotly_chart(fig, use_container_width=True)
-
-        insignificant()
         
-    # XGBoost vs LSTM
-    if xgb_lstm:
-        fig = px.bar(
-            xgb_lstm_df,
-            x="Model",
-            y="Model Advantage",
-            color="Model",
-            text="Model Advantage",
-            title="XGBoost vs LSTM"
-        )
+ # Create DataFrames for each pair
+rf_xgb_df = pd.DataFrame({
+    "Model": ["Random Forest", "XGBoost"],
+    "Model Advantage": [91, 144]
+})
 
-        fig.update_traces(
-            textposition="outside"
-        )
+rf_lstm_df = pd.DataFrame({
+    "Model": ["Random Forest", "LSTM"],
+    "Model Advantage": [188, 162]
+})
 
-        fig.update_layout(
-            yaxis_title="Model Advantage",
-            xaxis_title="Model",
-            yaxis=dict(range=[0, 210])
-        )
+xgb_lstm_df = pd.DataFrame({
+    "Model": ["XGBoost", "LSTM"],
+    "Model Advantage": [182, 103]
+})
 
-        st.plotly_chart(fig, use_container_width=True)
+with col2:
+    cola, colb = st.columns([1, 3])
+        with cola: 
+            st.subheader("Pairwise McNemar's with Bonferroni Correction")
+            st.info("Select a pairwise comparison:")
+    
+            selected_pair = st.radio(
+                "Pairwise comparison:",
+                [
+                    "Random Forest & XGBoost",
+                    "Random Forest & LSTM",
+                    "XGBoost & LSTM"
+                ]
+            )
 
-        significant()
+            # Keep the same Boolean logic
+            rf_xgb = selected_pair == "Random Forest & XGBoost"
+            rf_lstm = selected_pair == "Random Forest & LSTM"
+            xgb_lstm = selected_pair == "XGBoost & LSTM"
+            
+            # Random Forest vs XGBoost
+            if rf_xgb:
+                significant()
+
+        with colb: 
+                fig = px.bar(
+                    rf_xgb_df,
+                    x="Model",
+                    y="Model Advantage",
+                    text="Model Advantage",
+                    title="Random Forest vs XGBoost"
+                )
+        
+                fig.update_traces(
+                    textposition="outside"
+                )
+        
+                fig.update_layout(
+                    yaxis_title="Model Advantage",
+                    xaxis_title="Model",
+                    yaxis=dict(range=[0, 160])
+                )
+        
+                st.plotly_chart(fig, use_container_width=True)
