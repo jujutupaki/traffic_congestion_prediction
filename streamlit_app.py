@@ -418,7 +418,7 @@ with col2:
                 x="Model",
                 y="Model Advantage",
                 text="Model Advantage",
-                title="Random Forest vs XGBoost"
+                color="Model"
             )
 
             fig.update_traces(
@@ -444,7 +444,7 @@ with col2:
                 x="Model",
                 y="Model Advantage",
                 text="Model Advantage",
-                title="Random Forest vs LSTM"
+                color="Model"
             )
 
             fig.update_traces(
@@ -470,7 +470,7 @@ with col2:
                 x="Model",
                 y="Model Advantage",
                 text="Model Advantage",
-                title="XGBoost vs LSTM"
+                color="Model"
             )
 
             fig.update_traces(
