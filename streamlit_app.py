@@ -143,20 +143,21 @@ def display_prediction(prediction):
 
         prediction_text = pred_dict[prediction]
 
-    st.markdown(
+        st.markdown(
         f"""
         <div style="
             background-color:{bg_color};
-            padding:25px;
+            padding:20px 15px;
             border-radius:12px;
             text-align:center;
             border:2px solid {text_color};
             margin-bottom:30px;
+            height:100%;
         ">
-            <h3 style="margin:0; color:{text_color};">
+            <h3 style="margin:0; color:{text_color}; font-size:1.1rem;">
                 🚦 Predicted Traffic Congestion:
             </h3>
-            <h1 style="margin-top:10px; color:{text_color};">
+            <h1 style="margin-top:10px; color:{text_color}; font-size:1.6rem;">
                 {prediction_text}
             </h1>
         </div>
@@ -178,7 +179,13 @@ if predict_clicked:
 # Always display the prediction box
 display_prediction(st.session_state.prediction)
 
-st.info("""Legends for interpretation:\n
+col_pred, col_legend = st.columns([1, 1.4])
+
+with col_pred:
+    display_prediction(st.session_state.prediction)
+
+with col_legend:
+    st.info("""Legends for interpretation:\n
 🟢 Minimal vehicle volume detected. Wide gaps between vehicles. Free-flowing movement.\n
 🟡 Increased vehicle volume detected. Average and steady moving traffic. Minor speed reductions.\n
 🔴 Peak vehicle volume detected. Dense clustering of vehicles. Delayed traffic speed
