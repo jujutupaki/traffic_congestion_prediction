@@ -13,8 +13,8 @@ st.set_page_config(
 )
 
 st.title('🚗 Traffic Congestion Prediction in Harrison Road, Baguio City')
-
-st.divider('This is a divider...')
+st.write("Lorem ipsum lorem ipsum sobrang latina")
+st.divider()
 
 #CV SPlit
 dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
