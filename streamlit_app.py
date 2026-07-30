@@ -320,10 +320,10 @@ with col1:
 st.markdown("""
     <style>
     [data-testid="stMetricLabel"] {
-        font-size: 17px;
+        font-size: 15px;
     }
     [data-testid="stMetricValue"] {
-        font-size: 23px;
+        font-size: 20px;
     }
     </style>
     """, unsafe_allow_html=True)
