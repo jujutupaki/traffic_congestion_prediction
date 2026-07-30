@@ -315,7 +315,46 @@ with col1:
     st.subheader ("Cochran's Q Test")
     st.metric("Statistic","22.3586",border=True)
     st.metric("p-value","<0.001", border=True)
-    st.metric("Decision","Significant", border=True)
+
+    def significant():
+        st.markdown(
+            """
+            <div style="
+                background-color: #d4edda;
+                padding: 15px;
+                border-radius: 10px;
+                border: 1px solid #c3e6cb;
+            ">
+                <div style="color: #155724; font-size: 16px; font-weight: bold;">
+                    Significant
+                </div>
+                <div style="color: #155724; font-size: 28px; font-weight: bold;">
+                    0.0007
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+        
+    def insignificant():
+        st.markdown(
+            """
+            <div style="
+                background-color: #f8d7da;
+                padding: 15px;
+                border-radius: 10px;
+                border: 1px solid #f5c2c7;
+            ">
+                <div style="color: #721c24; font-size: 16px; font-weight: bold;">
+                    Not Significant
+                </div>
+                <div style="color: #721c24; font-size: 28px; font-weight: bold;">
+                    0.1814
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
     
 with col2:
     st.subheader("Pairwise McNemar's with Bonferroni Correction")
@@ -353,8 +392,6 @@ with col2:
 
     # Random Forest vs XGBoost
     if rf_xgb:
-        st.write("### Random Forest vs XGBoost")
-
         fig = px.bar(
             rf_xgb_df,
             x="Model",
@@ -375,29 +412,8 @@ with col2:
 
         st.plotly_chart(fig, use_container_width=True)
 
-        st.markdown(
-            """
-            <div style="
-                background-color: #d4edda;
-                padding: 15px;
-                border-radius: 10px;
-                border: 1px solid #c3e6cb;
-            ">
-                <div style="color: #155724; font-size: 16px; font-weight: bold;">
-                    Significant
-                </div>
-                <div style="color: #155724; font-size: 28px; font-weight: bold;">
-                    0.0007
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
     # Random Forest vs LSTM
     if rf_lstm:
-        st.write("### Random Forest vs LSTM")
-
         fig = px.bar(
             rf_lstm_df,
             x="Model",
@@ -439,8 +455,6 @@ with col2:
 
     # XGBoost vs LSTM
     if xgb_lstm:
-        st.write("### XGBoost vs LSTM")
-
         fig = px.bar(
             xgb_lstm_df,
             x="Model",
