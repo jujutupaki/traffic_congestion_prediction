@@ -13,8 +13,9 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title('🚗 Traffic Congestion Prediction in Harrison Road, Baguio City')
-st.write("Getting started: ")
+st.title('🚗 Traffic Congestion Prediction for Harrison Road, Baguio City')
+st.write("""Getting started:\n
+Select input features by entering them on the sidebar. Click the "Start Prediction" button to run the prediction below. """)
 st.divider()
 
 #CV SPlit
