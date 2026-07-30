@@ -178,28 +178,28 @@ with col1:
 with col2:
     st.info("""**Further Interpretation:**
 
-🟢 **Low**:
+🟢 **Low:**  
 Minimal vehicle volume detected  
 Wide gaps between vehicles  
 Free-flowing movement  
 
-🟡 **Moderate**
+🟡 **Moderate:**  
 Increased vehicle volume detected  
 Average and steady moving traffic  
 Minor speed reductions  
 
-🔴 **Heavy**
+🔴 **Heavy:**  
 Peak vehicle volume detected  
 Dense clustering of vehicles  
 Delayed traffic speed
 """)
 
-st.divider()
+st.header("Model Evaluation using Classification Metrics:", divider="gray")
 
 metrics_df = pd.read_csv("https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv",
              index_col=0)
 
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 
 with col1:
     st.info("Select metrics to display:")
@@ -216,53 +216,54 @@ with col2:
     xgb = st.checkbox("XGBoost")
     lstm = st.checkbox("LSTM")
 
+with col3: 
 # Collect active selections
-selected_models = []
-selected_metrics = []
-if rf: selected_models.append("Random Forest")
-if xgb: selected_models.append("XGBoost")
-if lstm: selected_models.append("LSTM")
-if accuracy: selected_metrics.append("Accuracy")
-if precision: selected_metrics.append("Precision")
-if recall: selected_metrics.append("Recall")
-if f1_score: selected_metrics.append("F1 Score")
-
-if selected_models and selected_metrics:
-
-    # Filter dataframe
-    filtered_df = metrics_df.loc[selected_models, selected_metrics]
-
-    # Convert to long format for Plotly
-    plot_df = filtered_df.reset_index()
-
-    id_col = plot_df.columns[0]
-
-    plot_df = plot_df.melt(
-    id_vars=id_col,
-    var_name="Metric",
-    value_name="Score"
-    ).rename(columns={id_col: "Model"})
-
-    # Create grouped bar chart
-    fig = px.bar(
-        plot_df,
-        x="Metric",
-        y="Score",
-        color="Model",
-        barmode="group",
-        text_auto=".3f",
-        title="Model Comparison",
-    )
-
-    fig.update_layout(
-    yaxis=dict(
-        range=[0, 0.82],
-        tickmode="array",
-        tickvals=[0, 0.2, 0.4, 0.6, 0.8]
+    selected_models = []
+    selected_metrics = []
+    if rf: selected_models.append("Random Forest")
+    if xgb: selected_models.append("XGBoost")
+    if lstm: selected_models.append("LSTM")
+    if accuracy: selected_metrics.append("Accuracy")
+    if precision: selected_metrics.append("Precision")
+    if recall: selected_metrics.append("Recall")
+    if f1_score: selected_metrics.append("F1 Score")
+    
+    if selected_models and selected_metrics:
+    
+        # Filter dataframe
+        filtered_df = metrics_df.loc[selected_models, selected_metrics]
+    
+        # Convert to long format for Plotly
+        plot_df = filtered_df.reset_index()
+    
+        id_col = plot_df.columns[0]
+    
+        plot_df = plot_df.melt(
+        id_vars=id_col,
+        var_name="Metric",
+        value_name="Score"
+        ).rename(columns={id_col: "Model"})
+    
+        # Create grouped bar chart
+        fig = px.bar(
+            plot_df,
+            x="Metric",
+            y="Score",
+            color="Model",
+            barmode="group",
+            text_auto=".3f",
+            title="Model Comparison",
         )
-    )
-
-    st.plotly_chart(fig, use_container_width=True)
-
-else:
-    st.warning("Please select at least one model and one metric.")
+    
+        fig.update_layout(
+        yaxis=dict(
+            range=[0, 0.82],
+            tickmode="array",
+            tickvals=[0, 0.2, 0.4, 0.6, 0.8]
+            )
+        )
+    
+        st.plotly_chart(fig, use_container_width=True)
+    
+    else:
+        st.warning("Please select at least one model and one metric.")
