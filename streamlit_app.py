@@ -199,7 +199,7 @@ st.header("Model Evaluation using Classification Metrics:", divider="gray")
 metrics_df = pd.read_csv("https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv",
              index_col=0)
 
-col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns(2)
 
 with col1:
     st.info("Select metrics to display:")
@@ -208,15 +208,14 @@ with col1:
     precision = st.checkbox("Precision")
     recall = st.checkbox("Recall")
     f1_score = st.checkbox("F1 Score")
-
-with col2:
+    
     st.info("Select model/s to show its performance:")
 
     rf = st.checkbox("Random Forest")
     xgb = st.checkbox("XGBoost")
     lstm = st.checkbox("LSTM")
 
-with col3: 
+with col2: 
 # Collect active selections
     selected_models = []
     selected_metrics = []
