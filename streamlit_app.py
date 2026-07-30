@@ -14,8 +14,6 @@ st.set_page_config(
 )
 
 st.title('🚗 Traffic Congestion Prediction for Harrison Road, Baguio City')
-st.caption("Predict, Evaluate, and Understand Weather-Based Traffic Congestion Prediction with ML")
-
 st.divider()
 
 #CV SPlit
