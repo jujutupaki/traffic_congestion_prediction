@@ -47,6 +47,9 @@ div[data-testid="stButton"] > button {
     border: 2px solid #d0d0d0 !important;
     border-radius: 8px !important;
     font-weight: 600 !important;
+    width: fit-content !important;
+    padding: 0.5rem 1.5rem !important;
+    white-space: nowrap !important;
 }
 
 div[data-testid="stButton"] > button:hover {
