@@ -125,9 +125,9 @@ def display_prediction(prediction):
             background-color:{bg_color};
             padding:20px 15px;
             border-radius:12px;
-            text-align:center;
+            text-align:left;
             border:2px solid {text_color};
-            margin-bottom:5px;
+            margin-bottom:10px;
             height:100%;
         ">
             <h3 style="margin:0; color:{text_color}; font-size:20px; text-align:center;">
@@ -160,7 +160,7 @@ with col1:
     # Prediction box is always displayed
     # Shows "No Prediction Yet" before the user clicks Start Prediction
     display_prediction(st.session_state.prediction)
-    with st.expander("Click to view chosen features: "):
+    with st.expander("Click to view chosen features: ", expanded=True):
         st.write("")
 
 with col2:
