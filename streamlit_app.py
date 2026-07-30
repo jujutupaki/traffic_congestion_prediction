@@ -293,7 +293,9 @@ with col2:
         st.warning("Please select at least one model and one metric.")
 
 st.write("")
-        
+st.write("")
+st.write("")
+
 st.header("Model Evaluation using Statistical Tools:", divider="gray")
 
 st.subheader ("Cochran's Q Test")
