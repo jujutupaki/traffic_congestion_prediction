@@ -298,7 +298,7 @@ st.write("")
 
 st.header("Model Evaluation using Statistical Tools:", divider="gray")
 
-col1, col2 = st.columns([1,3])
+col1, col2 = st.columns([1,3.5])
 
 with col1:
     st.subheader ("Cochran's Q Test")
