@@ -199,7 +199,7 @@ st.header("Model Evaluation using Classification Metrics:", divider="gray")
 metrics_df = pd.read_csv("https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv",
              index_col=0)
 
-col1, col2 = st.columns([1,3])
+col1, col2 = st.columns([1,4])
 
 with col1:
     st.info("Select metric/s:")
