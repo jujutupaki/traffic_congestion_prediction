@@ -316,35 +316,45 @@ with col1:
     st.metric("Statistic","22.3586",border=True)
     st.metric("p-value","<0.001", border=True)
     st.metric("Decision","Significant", border=True)
-
+    
 with col2:
     st.subheader("Pairwise McNemar's with Bonferroni Correction")
     st.info("Select a pairwise comparison:")
-    
-    rf_xgb = st.checkbox("Random Forest & XGBoost")
-    rf_lstm = st.checkbox("Random Forest & LSTM")
-    xgb_lstm = st.checkbox("XGBoost & LSTM")
-    
+
+    selected_pair = st.radio(
+        "Pairwise comparison:",
+        [
+            "Random Forest & XGBoost",
+            "Random Forest & LSTM",
+            "XGBoost & LSTM"
+        ]
+    )
+
+    # Keep the same Boolean logic
+    rf_xgb = selected_pair == "Random Forest & XGBoost"
+    rf_lstm = selected_pair == "Random Forest & LSTM"
+    xgb_lstm = selected_pair == "XGBoost & LSTM"
+
     # Create DataFrames for each pair
     rf_xgb_df = pd.DataFrame({
         "Model": ["Random Forest", "XGBoost"],
         "Model Advantage": [91, 144]
     })
-    
+
     rf_lstm_df = pd.DataFrame({
         "Model": ["Random Forest", "LSTM"],
         "Model Advantage": [188, 162]
     })
-    
+
     xgb_lstm_df = pd.DataFrame({
         "Model": ["XGBoost", "LSTM"],
         "Model Advantage": [182, 103]
     })
-    
+
     # Random Forest vs XGBoost
     if rf_xgb:
         st.write("### Random Forest vs XGBoost")
-    
+
         fig = px.bar(
             rf_xgb_df,
             x="Model",
@@ -352,19 +362,19 @@ with col2:
             text="Model Advantage",
             title="Random Forest vs XGBoost"
         )
-    
+
         fig.update_traces(
             textposition="outside"
         )
-    
+
         fig.update_layout(
             yaxis_title="Model Advantage",
             xaxis_title="Model",
             yaxis=dict(range=[0, 160])
         )
-    
+
         st.plotly_chart(fig, use_container_width=True)
-    
+
         st.markdown(
             """
             <div style="
@@ -383,11 +393,11 @@ with col2:
             """,
             unsafe_allow_html=True
         )
-    
+
     # Random Forest vs LSTM
     if rf_lstm:
         st.write("### Random Forest vs LSTM")
-    
+
         fig = px.bar(
             rf_lstm_df,
             x="Model",
@@ -395,42 +405,42 @@ with col2:
             text="Model Advantage",
             title="Random Forest vs LSTM"
         )
-    
+
         fig.update_traces(
             textposition="outside"
         )
-    
+
         fig.update_layout(
             yaxis_title="Model Advantage",
             xaxis_title="Model",
             yaxis=dict(range=[0, 210])
         )
-    
+
         st.plotly_chart(fig, use_container_width=True)
-    
+
         st.markdown(
-        """
-        <div style="
-            background-color: #f8d7da;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid #f5c2c7;
-        ">
-            <div style="color: #721c24; font-size: 16px; font-weight: bold;">
-                Not Significant
+            """
+            <div style="
+                background-color: #f8d7da;
+                padding: 15px;
+                border-radius: 10px;
+                border: 1px solid #f5c2c7;
+            ">
+                <div style="color: #721c24; font-size: 16px; font-weight: bold;">
+                    Not Significant
+                </div>
+                <div style="color: #721c24; font-size: 28px; font-weight: bold;">
+                    0.1814
+                </div>
             </div>
-            <div style="color: #721c24; font-size: 28px; font-weight: bold;">
-                0.1814
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True
+            """,
+            unsafe_allow_html=True
         )
-    
+
     # XGBoost vs LSTM
     if xgb_lstm:
         st.write("### XGBoost vs LSTM")
-    
+
         fig = px.bar(
             xgb_lstm_df,
             x="Model",
@@ -439,19 +449,19 @@ with col2:
             text="Model Advantage",
             title="XGBoost vs LSTM"
         )
-    
+
         fig.update_traces(
             textposition="outside"
         )
-    
+
         fig.update_layout(
             yaxis_title="Model Advantage",
             xaxis_title="Model",
             yaxis=dict(range=[0, 210])
         )
-    
+
         st.plotly_chart(fig, use_container_width=True)
-    
+
         st.markdown(
             """
             <div style="
@@ -464,9 +474,9 @@ with col2:
                     Significant
                 </div>
                 <div style="color: #155724; font-size: 28px; font-weight: bold;">
-                    0.0007
+                    <0.0001
                 </div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
