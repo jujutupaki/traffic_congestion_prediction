@@ -167,17 +167,40 @@ div[data-testid="stButton"] > button:hover {
 div[data-testid="stButton"] > button:focus {
     box-shadow: none !important;
 }
+
+div[data-testid="column"]:has(.pred-stack) {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+div[data-testid="column"]:has(.pred-stack) > div {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+}
+
+.pred-stack {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+}
+
+.pred-stack + div[data-testid="stButton"] {
+    margin-top: auto !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
 col_pred, col_legend = st.columns([1, 1.4])
 
 with col_pred:
+    st.markdown('<div class="pred-stack">', unsafe_allow_html=True)
     display_prediction(st.session_state.prediction)
     predict_clicked = st.button(
         "Start Prediction",
         use_container_width=True
     )
+    st.markdown('</div>', unsafe_allow_html=True)
 
 with col_legend:
     st.info("""Legends for interpretation:\n
