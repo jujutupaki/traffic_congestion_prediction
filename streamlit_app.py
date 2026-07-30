@@ -160,7 +160,7 @@ with col1:
     # Prediction box is always displayed
     # Shows "No Prediction Yet" before the user clicks Start Prediction
     display_prediction(st.session_state.prediction)
-    with st.expander("Click to view chosen features: ", expanded=True):
+    with st.expander("Chosen features: ", expanded=True):
         st.write("")
 
 with col2:
