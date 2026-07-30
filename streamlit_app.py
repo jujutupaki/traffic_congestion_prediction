@@ -122,13 +122,13 @@ def display_prediction(prediction):
     st.markdown(
         f"""
         <div style="
-            background-color:{bg_color};
-            padding:25px;
-            border-radius:12px;
-            text-align:center;
-            border:2px solid {text_color};
-            margin-bottom:5px;
-        ">
+         background-color:{bg_color};
+         padding:20px;
+         border-radius:12px;
+         text-align:center;
+         border:2px solid {text_color};
+         margin:0 auto 30px auto;
+         ">
             <h3 style="margin:0; color:{text_color};">
                 🚦 Predicted Traffic Congestion:
             </h3>
