@@ -14,6 +14,7 @@ st.set_page_config(
 )
 
 st.title('🚗 Traffic Congestion Prediction for Harrison Road, Baguio City')
+st.html("<hr style='border: none; border-top: 1px solid gray; margin-bottom: 5px;'>")
 
 #CV SPlit
 dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
