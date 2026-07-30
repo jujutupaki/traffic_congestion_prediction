@@ -123,17 +123,32 @@ def display_prediction(prediction):
         f"""
         <div style="
             background-color:{bg_color};
-            padding:20px 15px;
+            min-height:150px;
+            padding:25px;
             border-radius:12px;
             text-align:center;
             border:2px solid {text_color};
-            margin-bottom:5px;
-            height:100%;
+            margin-bottom:30px;
+            box-sizing:border-box;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
         ">
-            <h3 style="margin:0; color:{text_color}; font-size:20px;">
+            <h3 style="
+                margin:0;
+                color:{text_color};
+                font-size:16px;
+            ">
                 🚦 Predicted Traffic Congestion:
             </h3>
-            <h1 style="margin-top:10px; color:{text_color}; font-size:40px;">
+        
+            <h1 style="
+                margin-top:10px;
+                margin-bottom:0;
+                color:{text_color};
+                font-size:24px;
+            ">
                 {prediction_text}
             </h1>
         </div>
