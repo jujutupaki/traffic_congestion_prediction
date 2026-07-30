@@ -9,7 +9,8 @@ dataset_df = pd.read_csv('https://raw.githubusercontent.com/jujutupaki/traffic_c
 
 st.set_page_config(
     page_title="Traffic Congestion Prediction",
-    page_icon="🚗"
+    page_icon="🚗",
+    layout="wide"
 )
 
 st.title('🚗 Traffic Congestion Prediction in Harrison Road, Baguio City')
