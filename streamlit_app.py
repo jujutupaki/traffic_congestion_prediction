@@ -312,52 +312,55 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 with col1:
-    st.subheader ("Cochran's Q Test")
-    st.metric("Statistic","22.3586",border=True)
-    st.metric("p-value","<0.001", border=True)
-    st.metric("Decision","Significant", border=True)
-    
-    def significant():
-        st.markdown(
-            """
-            <div style="
-                background-color: #d4edda;
-                padding: 15px;
-                border-radius: 10px;
-                border: 1px solid #c3e6cb;
-            ">
-                <div style="color: #155724; font-size: 16px; font-weight: bold;">
-                    Significant
-                </div>
-                <div style="color: #155724; font-size: 28px; font-weight: bold;">
-                    0.0007
-                </div>
+    st.subheader("Cochran's Q Test")
+    st.metric("Statistic", "22.3586", border=True)
+    st.metric("p-value", "<0.001", border=True)
+    st.metric("Decision", "Significant", border=True)
+
+
+def significant():
+    st.markdown(
+        """
+        <div style="
+            background-color: #d4edda;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #c3e6cb;
+        ">
+            <div style="color: #155724; font-size: 16px; font-weight: bold;">
+                Significant
             </div>
-            """,
-            unsafe_allow_html=True
-        )
-        
-    def insignificant():
-        st.markdown(
-            """
-            <div style="
-                background-color: #f8d7da;
-                padding: 15px;
-                border-radius: 10px;
-                border: 1px solid #f5c2c7;
-            ">
-                <div style="color: #721c24; font-size: 16px; font-weight: bold;">
-                    Not Significant
-                </div>
-                <div style="color: #721c24; font-size: 28px; font-weight: bold;">
-                    0.1814
-                </div>
+            <div style="color: #155724; font-size: 28px; font-weight: bold;">
+                0.0007
             </div>
-            """,
-            unsafe_allow_html=True
-        )
-        
- # Create DataFrames for each pair
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+
+def insignificant():
+    st.markdown(
+        """
+        <div style="
+            background-color: #f8d7da;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #f5c2c7;
+        ">
+            <div style="color: #721c24; font-size: 16px; font-weight: bold;">
+                Not Significant
+            </div>
+            <div style="color: #721c24; font-size: 28px; font-weight: bold;">
+                0.1814
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+
+# Create DataFrames for each pair
 rf_xgb_df = pd.DataFrame({
     "Model": ["Random Forest", "XGBoost"],
     "Model Advantage": [91, 144]
@@ -373,47 +376,55 @@ xgb_lstm_df = pd.DataFrame({
     "Model Advantage": [182, 103]
 })
 
+
 with col2:
     cola, colb = st.columns([1, 3])
-        with cola: 
-            st.subheader("Pairwise McNemar's with Bonferroni Correction")
-            st.info("Select a pairwise comparison:")
-    
-            selected_pair = st.radio(
-                "Pairwise comparison:",
-                [
-                    "Random Forest & XGBoost",
-                    "Random Forest & LSTM",
-                    "XGBoost & LSTM"
-                ]
+
+    with cola:
+        st.subheader("Pairwise McNemar's with Bonferroni Correction")
+        st.info("Select a pairwise comparison:")
+
+        selected_pair = st.radio(
+            "Pairwise comparison:",
+            [
+                "Random Forest & XGBoost",
+                "Random Forest & LSTM",
+                "XGBoost & LSTM"
+            ]
+        )
+
+        # Keep the same Boolean logic
+        rf_xgb = selected_pair == "Random Forest & XGBoost"
+        rf_lstm = selected_pair == "Random Forest & LSTM"
+        xgb_lstm = selected_pair == "XGBoost & LSTM"
+
+        # Random Forest vs XGBoost
+        if rf_xgb:
+            significant()
+
+    with colb:
+        # Random Forest vs XGBoost
+        if rf_xgb:
+            fig = px.bar(
+                rf_xgb_df,
+                x="Model",
+                y="Model Advantage",
+                text="Model Advantage",
+                title="Random Forest vs XGBoost"
             )
 
-            # Keep the same Boolean logic
-            rf_xgb = selected_pair == "Random Forest & XGBoost"
-            rf_lstm = selected_pair == "Random Forest & LSTM"
-            xgb_lstm = selected_pair == "XGBoost & LSTM"
-            
-            # Random Forest vs XGBoost
-            if rf_xgb:
-                significant()
+            fig.update_traces(
+                textposition="outside"
+            )
 
-        with colb: 
-                fig = px.bar(
-                    rf_xgb_df,
-                    x="Model",
-                    y="Model Advantage",
-                    text="Model Advantage",
-                    title="Random Forest vs XGBoost"
-                )
-        
-                fig.update_traces(
-                    textposition="outside"
-                )
-        
-                fig.update_layout(
-                    yaxis_title="Model Advantage",
-                    xaxis_title="Model",
-                    yaxis=dict(range=[0, 160])
-                )
-        
-                st.plotly_chart(fig, use_container_width=True)
+            fig.update_layout(
+                yaxis_title="Model Advantage",
+                xaxis_title="Model",
+                yaxis=dict(range=[0, 160])
+            )
+
+            st.plotly_chart(
+                fig,
+                use_container_width=True
+            )
+
