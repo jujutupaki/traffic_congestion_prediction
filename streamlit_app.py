@@ -121,7 +121,6 @@ def display_prediction(prediction):
 
     st.markdown(
         f"""
-        f"""
         <div style="
             background-color:{bg_color};
             min-height:150px;
