@@ -41,6 +41,11 @@ y_test = test['Simulated Traffic Level']
 #button style
 st.markdown("""
 <style>
+section[data-testid="stSidebar"] div[data-testid="stButton"] {
+    display: flex !important;
+    justify-content: center !important;
+}
+
 div[data-testid="stButton"] > button {
     background-color: white !important;
     color: black !important;
