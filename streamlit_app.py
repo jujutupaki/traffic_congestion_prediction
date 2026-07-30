@@ -170,11 +170,11 @@ if predict_clicked:
 # Always display the prediction box
 display_prediction(st.session_state.prediction)
 
-st.info(""" Legends for interpretation:
+st.info("""Legends for interpretation:
 🟢  Low vehicle volume detected. Wide gaps between vehicles. Free-flowing movement.
 🟡 Increased vehicle volume detected. Average and steady moving traffic. Minor speed reductions.
 🔴 Peak vehicle volume detected. Dense clustering of vehicles. Delayed traffic speed
-"""")
+""")
 
 metrics_df = pd.read_csv("https://raw.githubusercontent.com/jujutupaki/traffic_congestion_prediction/refs/heads/master/models/metrics_df.csv",
              index_col=0)
