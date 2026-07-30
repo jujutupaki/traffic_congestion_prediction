@@ -13,10 +13,10 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title('🚗 Traffic Congestion Prediction for Harrison Road, Baguio City')
+st.title('🚗 Traffic Congestion Prediction for Harrison Road, Baguio City', divider="gray")
 st.write("""Getting started:\n
 Select input features by entering them on the sidebar. Click the "Start Prediction" button to run the prediction below. """)
-st.divider()
+
 
 #CV SPlit
 dataset_df['10_Minutes_Interval'] = pd.to_datetime(dataset_df['10_Minutes_Interval'])
