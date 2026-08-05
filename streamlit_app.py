@@ -181,23 +181,25 @@ with col1:
 **Vapour Pressure:** {v_pressure} kPa
     """)
         
+from textwrap import dedent
+
 with col2:
-    st.info("""
-  🟢 **Low:**
-Minimal vehicle volume detected  
-Wide gaps between vehicles  
-Free-flowing movement  
+    st.info(dedent("""
+        🟢 **Low:**
+        Minimal vehicle volume detected  
+        Wide gaps between vehicles  
+        Free-flowing movement
 
-🟡 **Moderate:**  
-Increased vehicle volume detected  
-Average and steady moving traffic  
-Minor speed reductions  
+        🟡 **Moderate:**
+        Increased vehicle volume detected  
+        Average and steady moving traffic  
+        Minor speed reductions
 
-🔴 **Heavy:**  
-Peak vehicle volume detected  
-Dense clustering of vehicles  
-Delayed traffic speed
-""")
+        🔴 **Heavy:**
+        Peak vehicle volume detected  
+        Dense clustering of vehicles  
+        Delayed traffic speed
+    """))
 
 st.header("Final Dataset Features & Ranking:", divider="gray")
 
