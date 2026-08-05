@@ -187,10 +187,10 @@ Minimal vehicle volume detected
 Wide gaps between vehicles  
 Free-flowing movement\n
 
-🟡 **Moderate:**  
+🟡 **Moderate:**\n
 Increased vehicle volume detected  
 Average and steady moving traffic  
-Minor speed reductions  
+Minor speed reductions\n
 
 🔴 **Heavy:**\n
 Peak vehicle volume detected  
