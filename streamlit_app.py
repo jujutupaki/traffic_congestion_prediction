@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 st.title('🚗 Traffic Congestion Prediction for Harrison Road, Baguio City')
-st.caption("""This dashboard is designed for the beneficiaries of the study, namely daily commuters, the general public, and future researchers.\n
+st.caption("""This dashboard is designed for the study 'Predicting Traffic Congestion under Different Weather Conditions using Machine Learning Apporaches' and its beneficiaries: daily commuters, the general public, and future researchers.\n
 It enables users to predict traffic congestion along Harrison Road, Baguio City under different weather conditions using trained machine learning models.\n
 Additionally, the dashboard provides performance evaluation results, allowing users to compare the predictive performance of the implemented machine learning models.
 """)
