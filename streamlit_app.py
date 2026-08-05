@@ -161,7 +161,7 @@ if predict_clicked:
     st.session_state.prediction = model.predict(input_df)
 
 # Prediction and legends
-col1, col2 = st.columns(2)
+col1, col2 = st.columns([4,1])
 
 with col1:
     # Prediction box is always displayed
