@@ -182,22 +182,24 @@ with col1:
     """)
         
 with col2:
-    st.info("""
-🟢 **Low:**
-Minimal vehicle volume detected  
-Wide gaps between vehicles  
-Free-flowing movement
+    st.markdown("""
+<div style="padding: 0.5rem;">
+<b>🟢 Low</b><br>
+Minimal vehicle volume detected<br>
+Wide gaps between vehicles<br>
+Free-flowing movement<br><br>
 
-🟡 **Moderate:**
-Increased vehicle volume detected  
-Average and steady moving traffic  
-Minor speed reductions
+<b>🟡 Moderate</b><br>
+Increased vehicle volume detected<br>
+Average and steady moving traffic<br>
+Minor speed reductions<br><br>
 
-🔴 **Heavy:**
-Peak vehicle volume detected  
-Dense clustering of vehicles  
+<b>🔴 Heavy</b><br>
+Peak vehicle volume detected<br>
+Dense clustering of vehicles<br>
 Delayed traffic speed
-""")
+</div>
+""", unsafe_allow_html=True)
 
 st.header("Final Dataset Features & Ranking:", divider="gray")
 
