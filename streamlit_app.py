@@ -183,7 +183,7 @@ with col1:
         
 with col2:
     st.info("""
-🟢 **Low:**
+  🟢 **Low:**
 Minimal vehicle volume detected  
 Wide gaps between vehicles  
 Free-flowing movement  
