@@ -182,17 +182,17 @@ with col1:
     """)
         
 with col2:
-    st.info("""🟢 **Low:**  
+    st.info("""🟢 **Low:**
 Minimal vehicle volume detected  
 Wide gaps between vehicles  
-Free-flowing movement  
+Free-flowing movement\n
 
 🟡 **Moderate:**  
 Increased vehicle volume detected  
 Average and steady moving traffic  
 Minor speed reductions  
 
-🔴 **Heavy:**  
+🔴 **Heavy:**\n
 Peak vehicle volume detected  
 Dense clustering of vehicles  
 Delayed traffic speed
